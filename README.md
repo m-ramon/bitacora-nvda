@@ -172,6 +172,70 @@ Get-Content 'C:\Users\Usuario\Desktop\10_Finanzas\historial.csv' | Select-Object
 6. **Commit y push.** `git add -A && git commit -m "..." && git push origin main`.
    Eso publica el tablero. Sin push, Francisco no ve nada nuevo.
 
+## Geometría del tablero (fórmulas exactas)
+
+Varios elementos se posicionan con porcentajes calculados. **Hay que recalcularlos cada día.**
+Estas son las fórmulas; si se improvisan, el tablero se rompe visualmente.
+
+### Barras de los dos motores — `.fill`
+
+Escala fija de **±3 %**, y cada barra **sale del centro**, así que dispone de la **mitad** de
+la pista, no de toda:
+
+```
+width % = min( |variacion| / 3 * 50 , 50 )
+clase   = "fill left"  si la variacion es negativa
+          "fill right" si es positiva
+```
+
+Ejemplo: −2,86 % → `2.86 / 3 * 50` = **47,7 %**
+
+> **Error típico, ya cometido una vez:** multiplicar por 100 en vez de por 50. Da 95,3 % y la
+> barra se sale de la pista por la izquierda. El máximo posible es 50 %.
+
+Si alguna variación supera el 3 %, subir la escala (por ejemplo a ±5 %) **y actualizar los tres
+rótulos de `.motor-scale`**, que hoy dicen −3 % / 0 / +3 %.
+
+### Marcadores del rango del día — `.mark` de la primera `.range-track`
+
+```
+left % = (precio - minimo_del_dia) / (maximo_del_dia - minimo_del_dia) * 100
+```
+
+Se marcan tres: el cierre de hoy (`data-kind="now"`), el precio de compra (`buy`, siempre
+14.410) y el cierre anterior (`prev`). **`now` va con `data-pos="below"` y los otros dos con
+`data-pos="above"`**, para que las etiquetas no se pisen cuando los precios quedan cerca.
+
+### Marcador de 52 semanas — segunda `.range-track`
+
+```
+left % = (nvda_usd - 164.07) / (236.54 - 164.07) * 100
+```
+
+Si NVIDIA hace un máximo o mínimo nuevo, actualizar los extremos en `posicion.json` y en los
+rótulos de `.range-ends`.
+
+### Termómetro de objetivos — `.today` y `.breakeven`
+
+Escala de **12.410 a 17.520** (los dos disparadores), rango 5.110:
+
+```
+left % = (precio - 12410) / 5110 * 100
+```
+
+- `.breakeven` es fijo en **42,86 %** (los 14.600).
+- Las zonas de color acompañan: `.zone.loss` 42,86 % y `.zone.gain` 57,14 %.
+- Si el precio se sale del rango, hay que ampliar la escala: quedaría fuera de la pista.
+
+### Barra de la meta — `.meta-fill`
+
+```
+width % = capital_aportado / 400000 * 100
+```
+
+**Ojo: es el capital APORTADO, no el valor de mercado.** No se mueve con el precio del CDR —
+sólo cambia cuando Francisco hace un aporte nuevo. Hoy: 58.018 / 400.000 = 14,5 %.
+
 ## Reglas de contenido
 
 - **El número principal es el resultado REAL** (neto de la comisión de venta), no la ganancia
