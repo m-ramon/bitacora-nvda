@@ -1,0 +1,96 @@
+{
+  "titular": "Francisco",
+  "broker": "Nación Bursátil S.A. (ALyC Integral N°26)",
+  "activo": {
+    "ticker_cdr": "NVDA",
+    "mercado": "BYMA",
+    "nombre": "NVIDIA Corporation - CEDEAR",
+    "ticker_subyacente": "NVDA",
+    "mercado_subyacente": "NASDAQ",
+    "ratio_acciones_por_cdr": 0.04166667,
+    "cdr_por_accion": 24
+  },
+  "compra": {
+    "fecha": "2026-08-10",
+    "cantidad_cdr": 4,
+    "precio_unitario_ars": 14410,
+    "monto_bruto_ars": 57640,
+    "acciones_nvda_equivalentes": 0.16666668,
+    "comision_ars": 348.72,
+    "derechos_mercado_ars": 28.82,
+    "costo_total_ars": 58017.54
+  },
+  "costos": {
+    "_estado": "CONFIRMADO por el boleto de compra",
+    "comision_broker_pct": 0.5,
+    "iva_sobre_comision_pct": 21,
+    "derechos_mercado_byma_pct": 0.05,
+    "costo_efectivo_por_punta_pct": 0.655,
+    "_formula_costo_punta": "0.5% * 1.21 + 0.05% = 0.655% sobre el monto operado",
+    "punto_equilibrio_ars": 14600,
+    "punto_equilibrio_suba_necesaria_pct": 1.32
+  },
+  "meta": {
+    "_definida_por": "Francisco, 10/08/2026",
+    "objetivo_ars": 400000,
+    "medida_en": "pesos del 2026-08-10 (se ajusta por inflacion, NO es nominal)",
+    "estrategia": "acumulacion con aportes mensuales",
+    "aporte_mensual_ars": 30000,
+    "aporte_cuando": "primera semana de cada mes (dias 1 al 7)",
+    "aporte_proximo": "2026-09-01 al 2026-09-07",
+    "_aporte_recordatorio": "Los dias 1 al 7 de cada mes, el reporte diario debe recordar el aporte y avisar si todavia no se registro.",
+    "aportado_hasta_ahora_ars": 58017.54,
+    "avance_pct": 14.5,
+    "falta_ars": 341982.46,
+    "inflacion": {
+      "supuesto_mensual_pct": 2.0,
+      "supuesto_fuente": "REM del BCRA, relevamiento de junio 2026",
+      "ultimo_dato_indec_mensual_pct": 1.9,
+      "ultimo_dato_indec_periodo": "junio 2026",
+      "ultimo_dato_indec_interanual_pct": 33.5,
+      "proximo_dato": "IPC de julio 2026, publica INDEC el 13/08/2026",
+      "_regla": "Actualizar este bloque cada mes con el dato real del INDEC y recalcular la meta nominal."
+    },
+    "plazo_estimado": {
+      "con_aporte_ajustado_por_inflacion_meses": 12,
+      "con_aporte_fijo_en_30000_meses": 13,
+      "_supuesto": "La inversion mantiene su valor real (los CDR siguen al dolar). Si NVIDIA rinde por encima de la inflacion, mas rapido; si cae, mas lento.",
+      "fecha_estimada": "agosto / septiembre 2027"
+    },
+    "meta_nominal_estimada_ars": 517440,
+    "_nota_meta_nominal": "Lo que tiene que marcar la cuenta en 13 meses para valer 400.000 de hoy, al 2% mensual. Recalcular con cada dato del INDEC."
+  },
+  "objetivos": {
+    "_definidos_por": "Francisco, 10/08/2026",
+    "_base_de_medicion": "ganancia/perdida REAL, neta de comisiones de compra y venta",
+    "_ejecucion": "vender los 4 CDR",
+    "_post_venta": "REINGRESO: con todo el dinero vuelve a comprar y los disparadores se recalculan sobre el precio nuevo. La venta es un reinicio, no una salida del plan.",
+    "_costo_del_reinicio": "0.655% al vender + 0.655% al volver a entrar. Sobre 69.600 ARS son unos 910 ARS por vuelta.",
+    "toma_ganancia": {
+      "objetivo_pct": 20,
+      "precio_disparador_ars": 17520,
+      "variacion_precio_necesaria_pct": 21.58,
+      "ganancia_neta_ars": 11603.51
+    },
+    "corte_perdida": {
+      "objetivo_pct": -15,
+      "precio_disparador_ars": 12410,
+      "variacion_precio_necesaria_pct": -13.88,
+      "perdida_neta_ars": -8702.63
+    }
+  },
+  "fuentes": {
+    "cdr_ars": "https://www.rava.com/perfil/NVDA",
+    "nvda_usd": "https://www.google.com/finance/quote/NVDA:NASDAQ",
+    "nvda_fundamentals": "https://stockanalysis.com/stocks/nvda/",
+    "aranceles_broker": "https://nacionbursatil.com.ar/assets/pdf/Tabla-de-Aranceles-y-Comisiones-2025_aprobados-Directorio-09-04-2025.pdf",
+    "ipc": "https://www.indec.gob.ar/"
+  },
+  "referencia": {
+    "nvda_52s_min": 164.07,
+    "nvda_52s_max": 236.54,
+    "nvda_per": 34.3,
+    "nvda_market_cap_usd": "5.30T",
+    "proximo_balance": "2026-08-26"
+  }
+}

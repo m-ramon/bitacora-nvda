@@ -1,0 +1,1199 @@
+<title>Bitácora NVDA · Francisco</title>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --ground:     #EDF0EF;
+    --surface:    #F8FAF9;
+    --ink:        #16201F;
+    --ink-muted:  #5A6863;
+    --ink-faint:  #8A9791;
+    --rule:       #D2D9D6;
+    --rule-soft:  #E2E7E5;
+    --brass:      #8F7130;
+    --brass-dim:  #B49A62;
+    --pos:        #1F7A55;
+    --neg:        #B0472A;
+    --pos-wash:   #1F7A5522;
+    --neg-wash:   #B0472A22;
+
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    --sans:  system-ui, "Segoe UI", Roboto, -apple-system, sans-serif;
+    --mono:  "Cascadia Mono", Consolas, Menlo, "DejaVu Sans Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground:     #0D1416;
+      --surface:    #131C1E;
+      --ink:        #E6EDEA;
+      --ink-muted:  #93A29D;
+      --ink-faint:  #67766F;
+      --rule:       #253230;
+      --rule-soft:  #1B2526;
+      --brass:      #C9A25C;
+      --brass-dim:  #8A7440;
+      --pos:        #4FB98A;
+      --neg:        #E07A55;
+      --pos-wash:   #4FB98A22;
+      --neg-wash:   #E07A5522;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:     #0D1416;
+    --surface:    #131C1E;
+    --ink:        #E6EDEA;
+    --ink-muted:  #93A29D;
+    --ink-faint:  #67766F;
+    --rule:       #253230;
+    --rule-soft:  #1B2526;
+    --brass:      #C9A25C;
+    --brass-dim:  #8A7440;
+    --pos:        #4FB98A;
+    --neg:        #E07A55;
+    --pos-wash:   #4FB98A22;
+    --neg-wash:   #E07A5522;
+  }
+
+  :root[data-theme="light"] {
+    --ground:     #EDF0EF;
+    --surface:    #F8FAF9;
+    --ink:        #16201F;
+    --ink-muted:  #5A6863;
+    --ink-faint:  #8A9791;
+    --rule:       #D2D9D6;
+    --rule-soft:  #E2E7E5;
+    --brass:      #8F7130;
+    --brass-dim:  #B49A62;
+    --pos:        #1F7A55;
+    --neg:        #B0472A;
+    --pos-wash:   #1F7A5522;
+    --neg-wash:   #B0472A22;
+  }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 2rem 1.15rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* ---------- shared atoms ---------- */
+
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin: 0;
+  }
+
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  .pos { color: var(--pos); }
+  .neg { color: var(--neg); }
+
+  section { display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--brass-dim);
+    flex-wrap: wrap;
+  }
+
+  .sec-head h2 {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    font-weight: 400;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .sec-head .aside {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  p { margin: 0; }
+
+  .prose {
+    font-family: var(--serif);
+    font-size: 0.97rem;
+    color: var(--ink-muted);
+    max-width: 62ch;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    border-top: 3px solid var(--brass);
+    padding-top: 1rem;
+  }
+
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 5.5vw, 2rem);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  .stamp {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.73rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 0.12rem 0.45rem;
+    color: var(--ink-muted);
+  }
+
+  .dot {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: var(--brass);
+    flex: none;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--pos);
+    padding: 1.35rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+
+  .hero.neg-hero { border-left-color: var(--neg); }
+
+  /* ---------- termómetro de objetivos ---------- */
+
+  .thermo {
+    position: relative;
+    height: 1.5rem;
+    margin: 3rem 0 1.4rem;
+    border: 1px solid var(--rule);
+    display: flex;
+    overflow: hidden;
+  }
+
+  .zone { height: 100%; flex: none; }
+  .zone.loss { background: var(--neg-wash); }
+  .zone.gain { background: var(--pos-wash); }
+
+  .breakeven {
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    width: 2px;
+    background: var(--brass);
+    z-index: 2;
+  }
+
+  .breakeven .tag {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% + 0.3rem);
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--brass);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .breakeven .tag .lbl {
+    display: block;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .today {
+    position: absolute;
+    top: -0.45rem;
+    bottom: -0.45rem;
+    width: 3px;
+    background: var(--ink);
+    z-index: 3;
+  }
+
+  .today .tag {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% + 0.3rem);
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .today .tag .lbl {
+    display: block;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .thermo-ends {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .thermo-ends .end { display: flex; flex-direction: column; gap: 0.1rem; }
+  .thermo-ends .end.r { text-align: right; }
+
+  /* ---------- barra de meta ---------- */
+
+  .meta-bar {
+    position: relative;
+    height: 2.1rem;
+    border: 1px solid var(--rule);
+    background: var(--rule-soft);
+    overflow: hidden;
+    display: flex;
+  }
+
+  .meta-fill {
+    height: 100%;
+    background: var(--brass);
+    flex: none;
+  }
+
+  .meta-scale {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .meta-scale strong { color: var(--brass); font-size: 0.85rem; }
+
+  .thermo-ends .end .lbl {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* Estas dos ganan por especificidad a la regla de arriba. */
+  .thermo-ends .end .lbl.pos { color: var(--pos); }
+  .thermo-ends .end .lbl.neg { color: var(--neg); }
+
+  .hero-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .hero-figure {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hero-figure .big {
+    font-size: clamp(2.1rem, 9vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .hero-figure .pct {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-weight: 600;
+  }
+
+  .hero-split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: 0.9rem 1.4rem;
+    border-top: 1px dashed var(--rule);
+    padding-top: 1rem;
+  }
+
+  .cell { display: flex; flex-direction: column; gap: 0.15rem; }
+
+  .cell .k {
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .cell .v {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 1.02rem;
+    font-weight: 600;
+  }
+
+  .cell .sub {
+    font-family: var(--mono);
+    font-size: 0.71rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- motores ---------- */
+
+  .motor { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .motor-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .motor-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .motor-name { font-size: 0.85rem; color: var(--ink-muted); }
+  .motor-name strong { color: var(--ink); font-weight: 600; }
+
+  .motor-val {
+    font-family: var(--mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex: none;
+  }
+
+  .track {
+    position: relative;
+    height: 1.15rem;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule);
+  }
+
+  .track::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -1px;
+    bottom: -1px;
+    width: 1px;
+    background: var(--brass-dim);
+    z-index: 2;
+  }
+
+  .fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+
+  .fill.left  { right: 50%; background: var(--neg); }
+  .fill.right { left: 50%;  background: var(--pos); }
+
+  .motor-row.net .track { border-color: var(--brass-dim); border-width: 1px; }
+  .motor-row.net .motor-name strong { color: var(--brass); }
+
+  .motor-scale {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .formula {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--ink-muted);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 2px solid var(--brass-dim);
+    padding: 0.7rem 0.85rem;
+    overflow-x: auto;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.7;
+  }
+
+  /* ---------- range bars ---------- */
+
+  .range { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .range-track {
+    position: relative;
+    height: 0.5rem;
+    background: linear-gradient(90deg, var(--rule-soft), var(--rule));
+    border: 1px solid var(--rule);
+    margin: 2.6rem 0 1.5rem;
+  }
+
+  .mark {
+    position: absolute;
+    top: 50%;
+    width: 2px;
+    height: 1.5rem;
+    transform: translate(-50%, -50%);
+    background: var(--ink-faint);
+  }
+
+  .mark[data-kind="now"]   { background: var(--brass); width: 3px; height: 2rem; }
+  .mark[data-kind="buy"]   { background: var(--ink); }
+
+  .mark .tag {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--ink-muted);
+  }
+
+  .mark .tag .lbl {
+    display: block;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .mark[data-pos="above"] .tag { bottom: calc(100% + 0.3rem); }
+  .mark[data-pos="below"] .tag { top: calc(100% + 0.3rem); }
+  .mark[data-kind="now"] .tag { color: var(--brass); font-weight: 700; }
+
+  .range-ends {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- tables ---------- */
+
+  .table-scroll { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th, td {
+    padding: 0.5rem 0.6rem;
+    text-align: right;
+    border-bottom: 1px solid var(--rule-soft);
+    white-space: nowrap;
+  }
+
+  th {
+    font-family: var(--sans);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  th:first-child, td:first-child { text-align: left; }
+  tbody tr:last-child td { border-bottom: none; }
+
+  .grid-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1rem 1.3rem;
+  }
+
+  /* ---------- nota ---------- */
+
+  .nota {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--brass);
+    padding: 1.15rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .nota p {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 62ch;
+  }
+
+  .nota .lede::first-letter {
+    font-size: 2.6rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.1rem 0.4rem 0 0;
+    color: var(--brass);
+    font-weight: 700;
+  }
+
+  /* ---------- pendientes ---------- */
+
+  .todo {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .todo li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    align-items: start;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    max-width: 62ch;
+  }
+
+  .todo li::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid var(--brass);
+    flex: none;
+  }
+
+  .todo strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+    max-width: 62ch;
+  }
+
+  footer a { color: var(--brass); text-decoration: none; border-bottom: 1px solid var(--brass-dim); }
+  footer a:hover, footer a:focus-visible { color: var(--ink); }
+
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Bitácora · Día 1</p>
+    <h1>NVIDIA CDR — la posición de Francisco</h1>
+    <div class="stamp">
+      <span class="chip"><span class="dot"></span>Cierre de rueda</span>
+      <span>Datos al lunes 10/08/2026, al cierre</span>
+      <span>BYMA cierra 17:00</span>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section>
+    <div class="hero neg-hero">
+      <span class="hero-label">Si Francisco vendiera hoy</span>
+
+      <div class="hero-figure neg">
+        <span class="big">−914</span>
+        <span class="pct">pesos&nbsp;&nbsp;·&nbsp;&nbsp;−1,58 %</span>
+      </div>
+
+      <div class="hero-split">
+        <div class="cell">
+          <span class="k">Le quedarían</span>
+          <span class="v num">57.104</span>
+          <span class="sub">ya pagada la venta</span>
+        </div>
+        <div class="cell">
+          <span class="k">Le costó</span>
+          <span class="v num">58.018</span>
+          <span class="sub">57.640 + 378 de costos</span>
+        </div>
+        <div class="cell">
+          <span class="k">En papel</span>
+          <span class="v num neg">−160</span>
+          <span class="sub">lo que muestra el broker</span>
+        </div>
+        <div class="cell">
+          <span class="k">Equivale a</span>
+          <span class="v num">0,1667</span>
+          <span class="sub">acciones de NVIDIA</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="prose">
+      Ojo con esos dos números, porque no dicen lo mismo. La app del broker le va a mostrar a
+      Francisco <strong>−160 pesos</strong>: es la pérdida <em>en papel</em>, la diferencia
+      entre lo que valen los 4 CDR y lo que pagó por ellos. Pero si los vendiera hoy tendría
+      que pagar la comisión de venta, y ahí el resultado real es <strong>−914 pesos</strong>.
+    </p>
+
+    <p class="prose">
+      Son 4 CDR, y como hacen falta <strong>24 CDR para armar una acción</strong> de NVIDIA,
+      Francisco es dueño de exactamente un sexto de acción.
+    </p>
+  </section>
+
+  <!-- ============ LOS DOS MOTORES ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Los dos motores</h2>
+      <span class="aside">variación del día</span>
+    </div>
+
+    <p class="prose">
+      Un CDR se mueve por dos cosas a la vez: lo que hace la acción en Estados Unidos, y lo
+      que hace el dólar acá. Hoy NVIDIA cayó fuerte y el dólar casi no ayudó.
+    </p>
+
+    <div class="motor">
+
+      <div class="motor-row">
+        <div class="motor-top">
+          <span class="motor-name"><strong>NVIDIA</strong> en Nasdaq · 217,55 USD</span>
+          <span class="motor-val neg num">−2,86 %</span>
+        </div>
+        <div class="track"><span class="fill left" style="width: 95.3%;"></span></div>
+      </div>
+
+      <div class="motor-row">
+        <div class="motor-top">
+          <span class="motor-name"><strong>Dólar</strong> CCL implícito · 1.585,29</span>
+          <span class="motor-val pos num">+0,70 %</span>
+        </div>
+        <div class="track"><span class="fill right" style="width: 23.3%;"></span></div>
+      </div>
+
+      <div class="motor-row net">
+        <div class="motor-top">
+          <span class="motor-name"><strong>Resultado:</strong> el CDR en pesos</span>
+          <span class="motor-val neg num">−2,18 %</span>
+        </div>
+        <div class="track"><span class="fill left" style="width: 72.7%;"></span></div>
+      </div>
+
+      <div class="motor-scale">
+        <span>−3 %</span><span>0</span><span>+3 %</span>
+      </div>
+    </div>
+
+    <div class="formula">
+      NVIDIA bajó 2,86 % … y el dólar apenas subió 0,70 %<br>
+      0,9714 × 1,0070 = 0,9782 &nbsp;→&nbsp; <strong>−2,18 %</strong><br>
+      <span style="color: var(--ink-faint)">Sin colchón cambiario, la caída de Nueva York llegó casi entera al CDR.</span>
+    </div>
+
+    <p class="prose">
+      Esa es la parte que casi nadie mira. Si NVIDIA cae pero el dólar sube más, el CDR
+      <em>sube</em> igual. Y al revés: NVIDIA puede subir en Nueva York y Francisco perder
+      plata acá. Por eso el reporte va a separar siempre estos dos números.
+    </p>
+  </section>
+
+  <!-- ============ EL DÍA DEL CDR ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Cómo se movió el CDR hoy</h2>
+      <span class="aside">493.746 nominales operados</span>
+    </div>
+
+    <div class="range">
+      <div class="range-track">
+        <span class="mark" data-kind="now" data-pos="below" style="left: 14.3%;">
+          <span class="tag"><span class="lbl">Cierre</span>14.370</span>
+        </span>
+        <span class="mark" data-kind="buy" data-pos="above" style="left: 22.4%;">
+          <span class="tag"><span class="lbl">Compró a</span>14.410</span>
+        </span>
+        <span class="mark" data-kind="prev" data-pos="above" style="left: 79.6%;">
+          <span class="tag"><span class="lbl">Cierre ayer</span>14.690</span>
+        </span>
+      </div>
+      <div class="range-ends">
+        <span>mínimo 14.300</span>
+        <span>máximo 14.790</span>
+      </div>
+    </div>
+
+    <p class="prose">
+      La rueda arrancó cerca del cierre de ayer (14.690) y pasó todo el día bajando: cerró casi
+      pegada al mínimo, apenas 70 pesos arriba del piso. Francisco compró un poco por encima
+      del cierre — no fue el mejor momento del día, pero tampoco el peor. Un día no dice nada;
+      lo interesante es cómo se comporta el precio en los próximos.
+    </p>
+  </section>
+
+  <!-- ============ NVIDIA EN CONTEXTO ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>NVIDIA, la empresa de atrás</h2>
+      <span class="aside">últimas 52 semanas</span>
+    </div>
+
+    <div class="range">
+      <div class="range-track">
+        <span class="mark" data-kind="now" data-pos="above" style="left: 73.8%;">
+          <span class="tag"><span class="lbl">Hoy</span>217,55</span>
+        </span>
+      </div>
+      <div class="range-ends">
+        <span>mínimo 164,07</span>
+        <span>máximo 236,54</span>
+      </div>
+    </div>
+
+    <div class="grid-facts">
+      <div class="cell">
+        <span class="k">Desde el máximo</span>
+        <span class="v num neg">−8,0 %</span>
+      </div>
+      <div class="cell">
+        <span class="k">Desde el mínimo</span>
+        <span class="v num pos">+32,6 %</span>
+      </div>
+      <div class="cell">
+        <span class="k">Capitalización</span>
+        <span class="v num">5,30 B USD</span>
+      </div>
+      <div class="cell">
+        <span class="k">Precio / ganancias</span>
+        <span class="v num">34,3</span>
+      </div>
+      <div class="cell">
+        <span class="k">Próximo balance</span>
+        <span class="v num">26 AGO</span>
+        <span class="sub">en 16 días</span>
+      </div>
+      <div class="cell">
+        <span class="k">Punto de equilibrio</span>
+        <span class="v num">14.600</span>
+        <span class="sub">+1,32 % sobre la compra</span>
+      </div>
+    </div>
+
+    <p class="prose">
+      El <strong>26 de agosto</strong> NVIDIA presenta resultados. Es la fecha más importante
+      del calendario de Francisco: los días de balance la acción se mueve fuerte en las dos
+      direcciones. Vale la pena que decida <em>antes</em> de esa fecha qué va a hacer, y no
+      en el momento.
+    </p>
+  </section>
+
+  <!-- ============ COSTOS ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Lo que cuesta entrar y salir</h2>
+      <span class="aside">Nación Bursátil</span>
+    </div>
+
+    <p class="prose">
+      Comprar y vender no es gratis, y en una posición chica los costos pesan más de lo que
+      parece. Francisco paga comisión <em>dos veces</em> — al comprar y al vender — más IVA
+      sobre esa comisión, más los derechos de mercado de BYMA.
+    </p>
+
+    <div class="formula">
+      Comisión Nación Bursátil 0,50 % × IVA 1,21 = 0,605 %<br>
+      + derechos de mercado BYMA 0,05 %<br>
+      = <strong>0,655 % por cada punta</strong>, o sea 378 pesos al comprar y otros 378 al vender
+    </div>
+
+    <p class="prose">
+      Por eso el <strong>punto de equilibrio está en 14.600</strong> y no en los 14.410 que
+      pagó. El CDR tiene que subir 1,32 % para que Francisco quede a mano — hasta ahí, aunque
+      la app le muestre ganancia, vender le daría pérdida.
+    </p>
+
+    <p class="prose">
+      Podría haber sido bastante peor. La tabla de Nación Bursátil autoriza <em>hasta</em>
+      2,75 %: a esa tasa el equilibrio se iba a 15.417 y Francisco habría necesitado una suba
+      del 7 % sólo para empatar. Le cobraron 0,5 %. <strong>La diferencia entre esas dos
+      comisiones vale más que muchos aciertos eligiendo la acción</strong>, y es la clase de
+      cosa que conviene mirar antes de abrir una cuenta, no después.
+    </p>
+  </section>
+
+  <!-- ============ OBJETIVOS ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Los dos números de Francisco</h2>
+      <span class="aside">fijados el 10/08</span>
+    </div>
+
+    <p class="prose">
+      Francisco decidió de antemano cuándo sale: <strong>si gana 20 % vende, si pierde 15 %
+      vende.</strong> Los dos porcentajes se miden sobre la ganancia real — la que le queda
+      después de pagar la comisión de venta — y en ambos casos vende los 4 CDR.
+    </p>
+
+    <p class="prose">
+      Pero vender no es irse. <strong>Con toda la plata en la mano vuelve a comprar</strong>, y
+      los dos disparadores se recalculan sobre el precio nuevo. La venta es un reinicio, no una
+      salida: el plan de acumulación sigue corriendo. Sin esta segunda mitad de la regla el
+      plan se interrumpiría a sí mismo — tocaría el objetivo, quedaría en efectivo, y nadie
+      sabría qué hacer después.
+    </p>
+
+    <p class="prose">
+      Vale la pena que Francisco sepa que cada vuelta de estas <strong>paga comisión dos veces
+      más</strong>: 0,655 % al vender y otro 0,655 % al volver a entrar. Sobre 69.600 pesos son
+      unos 910. No es motivo para no hacerlo — es motivo para no hacerlo seguido.
+    </p>
+
+    <div class="thermo-wrap">
+      <div class="thermo">
+        <span class="zone loss" style="width: 42.86%;"></span>
+        <span class="zone gain" style="width: 57.14%;"></span>
+        <span class="breakeven" style="left: 42.86%;">
+          <span class="tag"><span class="lbl">Empata</span>14.600</span>
+        </span>
+        <span class="today" style="left: 38.36%;">
+          <span class="tag"><span class="lbl">Hoy</span>14.370</span>
+        </span>
+      </div>
+      <div class="thermo-ends">
+        <span class="end">
+          <span class="lbl neg">Vende por pérdida</span>
+          <span class="num">12.410</span>
+        </span>
+        <span class="end r">
+          <span class="lbl pos">Vende por ganancia</span>
+          <span class="num">17.520</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Disparador</th>
+            <th>Precio del CDR</th>
+            <th>Desde hoy</th>
+            <th>Se lleva</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gana 20 %</td>
+            <td>17.520</td>
+            <td class="pos">+21,9 %</td>
+            <td class="pos">+11.604</td>
+          </tr>
+          <tr>
+            <td>Queda a mano</td>
+            <td>14.600</td>
+            <td>+1,6 %</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Pierde 15 %</td>
+            <td>12.410</td>
+            <td class="neg">−13,6 %</td>
+            <td class="neg">−8.703</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="prose">
+      Un detalle que Francisco tiene que tener claro: para ganar 20 % <em>de verdad</em>, el
+      precio del CDR tiene que subir <strong>21,6 %</strong>, no 20 %. Y para perder 15 % de
+      verdad alcanza con que baje <strong>13,9 %</strong>. Las comisiones corren los dos
+      números en su contra — le exigen más para ganar y lo sacan antes al perder.
+    </p>
+
+    <p class="prose">
+      Vale la pena decir también que el <strong>26 de agosto NVIDIA presenta balance</strong>.
+      Los días de balance la acción puede abrir muy lejos de donde cerró, así que si toca el
+      límite de abajo, puede tocarlo de golpe y no exactamente en 12.410. Un plan escrito no
+      garantiza el precio de salida; sirve para no improvisar.
+    </p>
+  </section>
+
+  <!-- ============ LA META ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>La meta: 400.000</h2>
+      <span class="aside">aportando todos los meses</span>
+    </div>
+
+    <div class="meta-bar">
+      <span class="meta-fill" style="width: 14.5%;"></span>
+    </div>
+    <div class="meta-scale">
+      <span><strong>14,5 %</strong> · 58.018 puestos</span>
+      <span>faltan 341.982</span>
+    </div>
+
+    <p class="prose">
+      Los 4 CDR no son «la inversión»: son el primer aporte. Francisco va a sumar
+      <strong>30.000 pesos por mes</strong> hasta llegar a 400.000, y la meta está medida
+      <strong>en pesos de hoy</strong> — o sea que se ajusta por inflación y no se ablanda con
+      el tiempo.
+    </p>
+
+    <div class="grid-facts">
+      <div class="cell">
+        <span class="k">Plazo estimado</span>
+        <span class="v num">12 – 13 meses</span>
+        <span class="sub">agosto / septiembre 2027</span>
+      </div>
+      <div class="cell">
+        <span class="k">Aporte mensual</span>
+        <span class="v num">30.000</span>
+        <span class="sub">primera semana del mes</span>
+      </div>
+      <div class="cell">
+        <span class="k">La meta en la pantalla</span>
+        <span class="v num">≈ 517.000</span>
+        <span class="sub">para valer 400.000 de hoy</span>
+      </div>
+    </div>
+
+    <p class="prose">
+      Ese último número merece una explicación, porque es el más contraintuitivo del tablero.
+      Si la meta son 400.000 <em>pesos de hoy</em> y los precios suben alrededor del 2 % por
+      mes, dentro de trece meses hacen falta unos <strong>517.000 pesos</strong> para comprar
+      lo mismo que hoy comprarían 400.000. La meta no es un número quieto: se mueve mientras
+      Francisco corre hacia ella.
+    </p>
+
+    <p class="prose">
+      De ahí sale la regla práctica más útil del plan: <strong>si deja el aporte clavado en
+      30.000 durante todo el año, tarda trece meses en vez de doce.</strong> Cada mes que pasa,
+      esos 30.000 compran un poco menos. Si en cambio los va subiendo con la inflación —
+      30.600 el mes que viene, 31.200 el siguiente — llega en doce y no pierde terreno.
+    </p>
+
+    <p class="prose">
+      Y algo que conviene tener presente todo el año: un 20 % de ganancia sobre los 58.018 de
+      hoy son 11.600 pesos, menos de la mitad de un aporte mensual. <strong>Al principio de un
+      plan de acumulación, el aporte le gana al mercado por goleada.</strong> NVIDIA acelera o
+      frena el plazo, pero el que lo define es Francisco todos los meses. Recién cuando la
+      cuenta se haga grande el rendimiento va a pesar más que el aporte — y ahí se pone
+      interesante.
+    </p>
+
+    <p class="prose">
+      El aporte va en la <strong>primera semana de cada mes</strong>. El próximo cae entre el
+      martes 1 y el lunes 7 de septiembre. A partir del mes que viene, el reporte de esos días
+      lo va a recordar solo — así el hábito no depende de que alguien se acuerde.
+    </p>
+
+    <div class="formula">
+      Supuesto de inflación: <strong>2,0 % mensual</strong> (REM del BCRA, junio 2026)<br>
+      Último dato real del INDEC: 1,9 % mensual · 33,5 % interanual<br>
+      <span style="color: var(--ink-faint)">Se actualiza cada mes con el IPC publicado. El de julio sale el 13/08.</span>
+    </div>
+  </section>
+
+  <!-- ============ NOTA DEL DÍA ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>La nota del día</h2>
+      <span class="aside">10/08/2026</span>
+    </div>
+
+    <div class="nota">
+      <p class="lede">
+        Primer día completo y cierre en rojo, sin sorpresas y también sin colchón. Francisco
+        compró 4 CDR de NVIDIA a 14.410 pesos y la acción tuvo una jornada floja en Estados
+        Unidos: cayó 2,86 %, del cierre anterior de 223,96 USD a 217,55. Fue una caída más
+        marcada que la que se veía a media tarde, cuando el snapshot intradiario mostraba una
+        rueda casi empatada.
+      </p>
+      <p>
+        Y esta vez el dólar casi no ayudó: el CCL implícito subió apenas 0,70 %, de 1.574 a
+        1.585. Los dos motores dieron el mismo signo y el CDR terminó en 14.370, un 2,18 %
+        abajo. La cuenta cierra clavada: 0,9714 × 1,0070 = 0,9782. Sin colchón cambiario, casi
+        toda la caída de Nueva York le llegó a Francisco.
+      </p>
+      <p>
+        En papel la posición quedó 160 pesos abajo, pero eso es lo de menos: descontando la
+        comisión de venta el resultado real es <strong>914 pesos en contra</strong>, un 1,58 %.
+        Cerró por debajo del punto de equilibrio (14.600) el mismo día de la compra — le falta
+        subir apenas 1,6 % para empatar. Ningún disparador cerca: para tomar ganancia (+20 %
+        real) faltan 21,9 % hasta 17.520; para cortar pérdida (−15 % real) faltan 13,6 % hasta
+        12.410.
+      </p>
+      <p>
+        Lo importante del día no fue el precio: fue que ya están escritos los dos números que
+        van a decidir cuándo sale. <strong>17.520 para arriba, 12.410 para abajo.</strong>
+        Fijados con la cabeza fría, dieciséis días antes del balance de NVIDIA. Eso es lo que
+        separa invertir de apostar.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PENDIENTES ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Lo que falta</h2>
+      <span class="aside">2 pendientes</span>
+    </div>
+
+    <ul class="todo">
+      <li>
+        <span><strong>El IPC de julio.</strong> Sale el 13 de agosto. Con ese dato la meta
+        ajustada deja de apoyarse en un supuesto del 2 % y pasa a usar el número real del
+        INDEC.</span>
+      </li>
+      <li>
+        <span><strong>El gráfico de evolución.</strong> Con unas dos semanas de datos el
+        tablero va a poder mostrar la curva y, sobre todo, cuál de los dos motores viene
+        mandando.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ HISTORIAL ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Historial</h2>
+      <span class="aside">1 registro</span>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>CDR</th>
+            <th>Día</th>
+            <th>NVDA</th>
+            <th>Día</th>
+            <th>CCL</th>
+            <th>Posición</th>
+            <th>Resultado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10/08</td>
+            <td>14.370</td>
+            <td class="neg">−2,18 %</td>
+            <td>217,55</td>
+            <td class="neg">−2,86 %</td>
+            <td>1.585,29</td>
+            <td>57.480</td>
+            <td class="neg">−914</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="prose">
+      Una sola fila todavía. Con unas dos semanas de datos vamos a poder graficar la
+      evolución y, sobre todo, ver cuál de los dos motores viene mandando.
+    </p>
+  </section>
+
+  <footer>
+    <p>
+      <strong>Cómo se calcula el CCL implícito:</strong> precio del CDR en pesos × 24 ÷
+      precio de NVIDIA en dólares. Hoy: 14.370 × 24 ÷ 217,55 = 1.585,29 pesos por dólar.
+    </p>
+    <p>
+      El valor en dólares de la posición sale de multiplicar 0,1667 acciones × 217,55 USD.
+      El costo en dólares es una estimación: no conocemos el CCL exacto del momento de la
+      compra, así que el día 1 el resultado en pesos y en dólares coincide por construcción.
+      Desde mañana se separan y ahí el dato empieza a servir.
+    </p>
+    <p>
+      Fuentes: <a href="https://www.rava.com/perfil/NVDA">Rava Bursátil</a> (CDR),
+      <a href="https://www.google.com/finance/quote/NVDA:NASDAQ">Google Finance</a> (NVDA),
+      <a href="https://stockanalysis.com/stocks/nvda/">StockAnalysis</a> (fundamentals).
+      Precios del CDR al cierre de la rueda.
+    </p>
+    <p>
+      Este tablero es un registro de datos con fines educativos. No es una recomendación de
+      compra ni de venta.
+    </p>
+  </footer>
+
+</div>
