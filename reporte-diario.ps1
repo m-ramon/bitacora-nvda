@@ -35,8 +35,12 @@ catch {
 $Proyecto    = 'C:\Users\Usuario\Desktop\10_Finanzas'
 $Logs        = Join-Path $Proyecto 'logs'
 $Historial   = Join-Path $Proyecto 'historial.csv'
-$ArtifactUrl = 'https://claude.ai/code/artifact/05409e21-4d6e-4733-9ddd-e8d7ee255440'
+$PagesUrl    = 'https://m-ramon.github.io/bitacora-nvda/'
 $TimeoutMin  = 12
+
+# Que git no abra ningun dialogo de credenciales: si no tiene el token
+# cacheado tiene que fallar rapido, no quedarse esperando a nadie.
+$env:GIT_TERMINAL_PROMPT = '0'
 
 if (-not (Test-Path $Logs)) { New-Item -ItemType Directory -Path $Logs | Out-Null }
 
@@ -109,23 +113,34 @@ Ejecuta el reporte diario de la bitacora NVDA.
 
 1. Lee $Proyecto\README.md y segui la seccion 'Procedimiento diario' al pie de la letra.
 2. Lee tambien posicion.json y las ultimas filas de historial.csv para tener el contexto.
-3. Al republicar el dashboard, pasa la URL $ArtifactUrl como parametro 'url' de la
-   herramienta Artifact, para que el link no cambie. Es imprescindible.
-4. Si hoy BYMA no opero (feriado), NO agregues fila al CSV ni republiques: explica por que
-   y termina.
+3. El tablero es index.html. Es un documento HTML COMPLETO (doctype, head con charset y
+   viewport). Al regenerarlo NO le saques el esqueleto: sin el, el celular de Francisco lo
+   muestra diminuto y se rompen los acentos.
+4. Si hoy BYMA no opero (feriado), NO agregues fila al CSV ni toques index.html: explica por
+   que y termina.
 5. Si algun precio no se consigue, no lo estimes ni lo copies del dia anterior. Deja el
    campo vacio y decilo en la nota del dia.
 6. Si historial.csv YA tiene una fila de hoy con estado 'intradiario', REEMPLAZALA por los
    datos del cierre (estado 'cierre'). No agregues una fila duplicada para el mismo dia.
 
-7. IMPRESCINDIBLE, HACELO SIEMPRE AL FINAL. Cuando termines todo lo anterior, AGREGA una
+7. PUBLICAR. Cuando el reporte este listo, hace commit y push con Bash:
+
+      git add -A
+      git commit -m "Reporte del <fecha>"
+      git push origin main
+
+   Esto es lo que actualiza la pagina que ve Francisco ($PagesUrl).
+   Sin push, el reporte queda solo en esta compu y el no ve nada nuevo.
+   Si el push falla, anotalo en el log del paso 8 con las palabras PUSH FALLIDO.
+
+8. IMPRESCINDIBLE, HACELO SIEMPRE AL FINAL. Cuando termines todo lo anterior, AGREGA una
    linea al final del archivo de log:
 
       $logFile
 
    Usa la herramienta Edit o Write para agregarla SIN borrar lo que ya tiene. Formato exacto:
 
-      [HH:mm:ss] CLAUDE OK | CDR <precio> | resultado <pesos> | dashboard <republicado|sin republicar>
+      [HH:mm:ss] CLAUDE OK | CDR <precio> | resultado <pesos> | push <ok|FALLIDO>
 
    Si algo fallo, escribi en su lugar:
 
@@ -170,7 +185,7 @@ if (-not (Test-Path $ClaudeCli)) {
 # consola y funciona igual con ventana o sin ella.
 $psi = New-Object System.Diagnostics.ProcessStartInfo
 $psi.FileName               = $NodeExe
-$psi.Arguments              = '"{0}" -p --allowedTools WebFetch,WebSearch,Read,Write,Edit,Artifact --permission-mode acceptEdits' -f $ClaudeCli
+$psi.Arguments              = '"{0}" -p --allowedTools WebFetch,WebSearch,Read,Write,Edit,Bash --permission-mode acceptEdits' -f $ClaudeCli
 $psi.WorkingDirectory       = $Proyecto
 $psi.UseShellExecute        = $false
 $psi.CreateNoWindow         = $true
