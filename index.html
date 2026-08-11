@@ -669,11 +669,11 @@
 <div class="wrap">
 
   <header class="masthead">
-    <p class="eyebrow">Bitácora · Día 1</p>
+    <p class="eyebrow">Bitácora · Día 2</p>
     <h1>NVIDIA CDR — la posición de Francisco</h1>
     <div class="stamp">
       <span class="chip"><span class="dot"></span>Cierre de rueda</span>
-      <span>Datos al lunes 10/08/2026, al cierre</span>
+      <span>Datos al martes 11/08/2026, al cierre</span>
       <span>BYMA cierra 17:00</span>
     </div>
   </header>
@@ -684,14 +684,14 @@
       <span class="hero-label">Si Francisco vendiera hoy</span>
 
       <div class="hero-figure neg">
-        <span class="big">−914</span>
-        <span class="pct">pesos&nbsp;&nbsp;·&nbsp;&nbsp;−1,58 %</span>
+        <span class="big">−755</span>
+        <span class="pct">pesos&nbsp;&nbsp;·&nbsp;&nbsp;−1,30 %</span>
       </div>
 
       <div class="hero-split">
         <div class="cell">
           <span class="k">Le quedarían</span>
-          <span class="v num">57.104</span>
+          <span class="v num">57.262</span>
           <span class="sub">ya pagada la venta</span>
         </div>
         <div class="cell">
@@ -701,7 +701,7 @@
         </div>
         <div class="cell">
           <span class="k">En papel</span>
-          <span class="v num neg">−160</span>
+          <span class="v num">0</span>
           <span class="sub">lo que muestra el broker</span>
         </div>
         <div class="cell">
@@ -713,10 +713,12 @@
     </div>
 
     <p class="prose">
-      Ojo con esos dos números, porque no dicen lo mismo. La app del broker le va a mostrar a
-      Francisco <strong>−160 pesos</strong>: es la pérdida <em>en papel</em>, la diferencia
-      entre lo que valen los 4 CDR y lo que pagó por ellos. Pero si los vendiera hoy tendría
-      que pagar la comisión de venta, y ahí el resultado real es <strong>−914 pesos</strong>.
+      Segundo día, y el precio hizo algo curioso: cerró <strong>exactamente al valor de
+      compra</strong>. En la app del broker Francisco va a ver un resultado de <strong>0
+      pesos</strong> — la posición vale hoy lo mismo que pagó por ella. Pero eso es sólo lo
+      que muestra la pantalla: si vendiera hoy tendría que pagar la comisión de venta y el
+      resultado real seguiría siendo negativo, <strong>−755 pesos</strong>. Es la mitad de la
+      pérdida de ayer, y ese sí es el número que importa.
     </p>
 
     <p class="prose">
@@ -734,33 +736,34 @@
 
     <p class="prose">
       Un CDR se mueve por dos cosas a la vez: lo que hace la acción en Estados Unidos, y lo
-      que hace el dólar acá. Hoy NVIDIA cayó fuerte y el dólar casi no ayudó.
+      que hace el dólar acá. Hoy es un caso de manual: NVIDIA no se movió y todo el empujón
+      lo puso el dólar.
     </p>
 
     <div class="motor">
 
       <div class="motor-row">
         <div class="motor-top">
-          <span class="motor-name"><strong>NVIDIA</strong> en Nasdaq · 217,55 USD</span>
-          <span class="motor-val neg num">−2,86 %</span>
+          <span class="motor-name"><strong>NVIDIA</strong> en Nasdaq · 217,50 USD</span>
+          <span class="motor-val neg num">−0,02 %</span>
         </div>
-        <div class="track"><span class="fill left" style="width: 47.7%;"></span></div>
+        <div class="track"><span class="fill left" style="width: 0.4%;"></span></div>
       </div>
 
       <div class="motor-row">
         <div class="motor-top">
-          <span class="motor-name"><strong>Dólar</strong> CCL implícito · 1.585,29</span>
-          <span class="motor-val pos num">+0,70 %</span>
+          <span class="motor-name"><strong>Dólar</strong> CCL implícito · 1.590,07</span>
+          <span class="motor-val pos num">+0,30 %</span>
         </div>
-        <div class="track"><span class="fill right" style="width: 11.7%;"></span></div>
+        <div class="track"><span class="fill right" style="width: 5.0%;"></span></div>
       </div>
 
       <div class="motor-row net">
         <div class="motor-top">
           <span class="motor-name"><strong>Resultado:</strong> el CDR en pesos</span>
-          <span class="motor-val neg num">−2,18 %</span>
+          <span class="motor-val pos num">+0,28 %</span>
         </div>
-        <div class="track"><span class="fill left" style="width: 36.3%;"></span></div>
+        <div class="track"><span class="fill right" style="width: 4.7%;"></span></div>
       </div>
 
       <div class="motor-scale">
@@ -769,15 +772,16 @@
     </div>
 
     <div class="formula">
-      NVIDIA bajó 2,86 % … y el dólar apenas subió 0,70 %<br>
-      0,9714 × 1,0070 = 0,9782 &nbsp;→&nbsp; <strong>−2,18 %</strong><br>
-      <span style="color: var(--ink-faint)">Sin colchón cambiario, la caída de Nueva York llegó casi entera al CDR.</span>
+      NVIDIA prácticamente empatada … y el dólar aportó todo el movimiento<br>
+      0,9998 × 1,0030 = 1,0028 &nbsp;→&nbsp; <strong>+0,28 %</strong><br>
+      <span style="color: var(--ink-faint)">Con NVIDIA quieta, el CDR se movió al ritmo del dólar. El caso opuesto al de ayer.</span>
     </div>
 
     <p class="prose">
-      Esa es la parte que casi nadie mira. Si NVIDIA cae pero el dólar sube más, el CDR
-      <em>sube</em> igual. Y al revés: NVIDIA puede subir en Nueva York y Francisco perder
-      plata acá. Por eso el reporte va a separar siempre estos dos números.
+      Este es <em>exactamente</em> el punto de este proyecto. Si Francisco mirara sólo NVIDIA,
+      diría que hoy no pasó nada. Pero acá en pesos ganó 40 pesos por CDR porque el dólar
+      subió. El CDR es <strong>NVIDIA multiplicada por el dólar</strong>, y a veces el que
+      manda es uno y a veces el otro.
     </p>
   </section>
 
@@ -785,32 +789,32 @@
   <section>
     <div class="sec-head">
       <h2>Cómo se movió el CDR hoy</h2>
-      <span class="aside">493.746 nominales operados</span>
+      <span class="aside">105.524 nominales operados</span>
     </div>
 
     <div class="range">
       <div class="range-track">
-        <span class="mark" data-kind="now" data-pos="below" style="left: 14.3%;">
-          <span class="tag"><span class="lbl">Cierre</span>14.370</span>
+        <span class="mark" data-kind="prev" data-pos="above" style="left: 0%;">
+          <span class="tag"><span class="lbl">Cierre ayer</span>14.370</span>
         </span>
-        <span class="mark" data-kind="buy" data-pos="above" style="left: 22.4%;">
+        <span class="mark" data-kind="buy" data-pos="above" style="left: 13.3%;">
           <span class="tag"><span class="lbl">Compró a</span>14.410</span>
         </span>
-        <span class="mark" data-kind="prev" data-pos="above" style="left: 79.6%;">
-          <span class="tag"><span class="lbl">Cierre ayer</span>14.690</span>
+        <span class="mark" data-kind="now" data-pos="below" style="left: 13.3%;">
+          <span class="tag"><span class="lbl">Cierre</span>14.410</span>
         </span>
       </div>
       <div class="range-ends">
-        <span>mínimo 14.300</span>
-        <span>máximo 14.790</span>
+        <span>mínimo 14.370</span>
+        <span>máximo 14.670</span>
       </div>
     </div>
 
     <p class="prose">
-      La rueda arrancó cerca del cierre de ayer (14.690) y pasó todo el día bajando: cerró casi
-      pegada al mínimo, apenas 70 pesos arriba del piso. Francisco compró un poco por encima
-      del cierre — no fue el mejor momento del día, pero tampoco el peor. Un día no dice nada;
-      lo interesante es cómo se comporta el precio en los próximos.
+      Rueda tranquila. El mínimo del día coincidió con el cierre de ayer (14.370) y el precio
+      llegó a tocar 14.670 antes de acomodarse en 14.410 al cierre — el mismo número al que
+      Francisco compró el lunes. El volumen fue bajo, <strong>105.524 nominales</strong>, un
+      quinto del de ayer: sin la presión vendedora del lunes, el precio se dejó llevar.
     </p>
   </section>
 
@@ -823,8 +827,8 @@
 
     <div class="range">
       <div class="range-track">
-        <span class="mark" data-kind="now" data-pos="above" style="left: 73.8%;">
-          <span class="tag"><span class="lbl">Hoy</span>217,55</span>
+        <span class="mark" data-kind="now" data-pos="above" style="left: 73.7%;">
+          <span class="tag"><span class="lbl">Hoy</span>217,50</span>
         </span>
       </div>
       <div class="range-ends">
@@ -853,7 +857,7 @@
       <div class="cell">
         <span class="k">Próximo balance</span>
         <span class="v num">26 AGO</span>
-        <span class="sub">en 16 días</span>
+        <span class="sub">en 15 días</span>
       </div>
       <div class="cell">
         <span class="k">Punto de equilibrio</span>
@@ -892,7 +896,7 @@
     <p class="prose">
       Por eso el <strong>punto de equilibrio está en 14.600</strong> y no en los 14.410 que
       pagó. El CDR tiene que subir 1,32 % para que Francisco quede a mano — hasta ahí, aunque
-      la app le muestre ganancia, vender le daría pérdida.
+      la app le muestre ganancia (o cero, como hoy), vender le daría pérdida.
     </p>
 
     <p class="prose">
@@ -938,8 +942,8 @@
         <span class="breakeven" style="left: 42.86%;">
           <span class="tag"><span class="lbl">Empata</span>14.600</span>
         </span>
-        <span class="today" style="left: 38.36%;">
-          <span class="tag"><span class="lbl">Hoy</span>14.370</span>
+        <span class="today" style="left: 39.14%;">
+          <span class="tag"><span class="lbl">Hoy</span>14.410</span>
         </span>
       </div>
       <div class="thermo-ends">
@@ -968,19 +972,19 @@
           <tr>
             <td>Gana 20 %</td>
             <td>17.520</td>
-            <td class="pos">+21,9 %</td>
+            <td class="pos">+21,58 %</td>
             <td class="pos">+11.604</td>
           </tr>
           <tr>
             <td>Queda a mano</td>
             <td>14.600</td>
-            <td>+1,6 %</td>
+            <td>+1,32 %</td>
             <td>0</td>
           </tr>
           <tr>
             <td>Pierde 15 %</td>
             <td>12.410</td>
-            <td class="neg">−13,6 %</td>
+            <td class="neg">−13,88 %</td>
             <td class="neg">−8.703</td>
           </tr>
         </tbody>
@@ -989,8 +993,8 @@
 
     <p class="prose">
       Un detalle que Francisco tiene que tener claro: para ganar 20 % <em>de verdad</em>, el
-      precio del CDR tiene que subir <strong>21,6 %</strong>, no 20 %. Y para perder 15 % de
-      verdad alcanza con que baje <strong>13,9 %</strong>. Las comisiones corren los dos
+      precio del CDR tiene que subir <strong>21,58 %</strong>, no 20 %. Y para perder 15 % de
+      verdad alcanza con que baje <strong>13,88 %</strong>. Las comisiones corren los dos
       números en su contra — le exigen más para ganar y lo sacan antes al perder.
     </p>
 
@@ -1043,18 +1047,10 @@
     </div>
 
     <p class="prose">
-      Ese último número merece una explicación, porque es el más contraintuitivo del tablero.
-      Si la meta son 400.000 <em>pesos de hoy</em> y los precios suben alrededor del 2 % por
-      mes, dentro de trece meses hacen falta unos <strong>517.000 pesos</strong> para comprar
-      lo mismo que hoy comprarían 400.000. La meta no es un número quieto: se mueve mientras
-      Francisco corre hacia ella.
-    </p>
-
-    <p class="prose">
-      De ahí sale la regla práctica más útil del plan: <strong>si deja el aporte clavado en
-      30.000 durante todo el año, tarda trece meses en vez de doce.</strong> Cada mes que pasa,
-      esos 30.000 compran un poco menos. Si en cambio los va subiendo con la inflación —
-      30.600 el mes que viene, 31.200 el siguiente — llega en doce y no pierde terreno.
+      La barra no se mueve con el precio del CDR: mide <strong>lo aportado</strong>, no lo que
+      vale la posición. Sólo va a crecer cuando Francisco haga un aporte nuevo. El próximo cae
+      entre el martes 1 y el lunes 7 de septiembre — el reporte de esos días lo va a recordar
+      solo.
     </p>
 
     <p class="prose">
@@ -1066,16 +1062,10 @@
       interesante.
     </p>
 
-    <p class="prose">
-      El aporte va en la <strong>primera semana de cada mes</strong>. El próximo cae entre el
-      martes 1 y el lunes 7 de septiembre. A partir del mes que viene, el reporte de esos días
-      lo va a recordar solo — así el hábito no depende de que alguien se acuerde.
-    </p>
-
     <div class="formula">
       Supuesto de inflación: <strong>2,0 % mensual</strong> (REM del BCRA, junio 2026)<br>
       Último dato real del INDEC: 1,9 % mensual · 33,5 % interanual<br>
-      <span style="color: var(--ink-faint)">Se actualiza cada mes con el IPC publicado. El de julio sale el 13/08.</span>
+      <span style="color: var(--ink-faint)">Se actualiza cada mes con el IPC publicado. El de julio sale pasado mañana (13/08).</span>
     </div>
   </section>
 
@@ -1083,36 +1073,32 @@
   <section>
     <div class="sec-head">
       <h2>La nota del día</h2>
-      <span class="aside">10/08/2026</span>
+      <span class="aside">11/08/2026</span>
     </div>
 
     <div class="nota">
       <p class="lede">
-        Primer día completo y cierre en rojo, sin sorpresas y también sin colchón. Francisco
-        compró 4 CDR de NVIDIA a 14.410 pesos y la acción tuvo una jornada floja en Estados
-        Unidos: cayó 2,86 %, del cierre anterior de 223,96 USD a 217,55. Fue una caída más
-        marcada que la que se veía a media tarde, cuando el snapshot intradiario mostraba una
-        rueda casi empatada.
+        Segundo día y un giro chico, pero didáctico. El CDR recuperó los 40 pesos que había
+        perdido ayer y cerró clavado en 14.410, el mismo precio al que Francisco compró el
+        lunes. Lo interesante no es el número: es <em>de dónde salió</em>. NVIDIA cerró
+        prácticamente empatada en Nueva York — 217,50 USD contra 217,55, una baja del 0,02 %
+        que en la práctica es cero. Todo el movimiento vino del otro lado.
       </p>
       <p>
-        Y esta vez el dólar casi no ayudó: el CCL implícito subió apenas 0,70 %, de 1.574 a
-        1.585. Los dos motores dieron el mismo signo y el CDR terminó en 14.370, un 2,18 %
-        abajo. La cuenta cierra clavada: 0,9714 × 1,0070 = 0,9782. Sin colchón cambiario, casi
-        toda la caída de Nueva York le llegó a Francisco.
+        El dólar CCL implícito subió 0,30 % (de 1.585,29 a 1.590,07) y eso fue suficiente para
+        empujar al CDR un 0,28 % para arriba. La cuenta cierra clavada: 0,9998 × 1,0030 = 1,0028.
+        Es el caso opuesto al de ayer, cuando NVIDIA cayó fuerte y el dólar casi no ayudó. Hoy
+        NVIDIA no hizo nada y el dólar movió todo. Si Francisco sólo mirara la cotización de
+        NVIDIA en Nueva York, diría que hoy fue un día muerto. Pero acá ganó 40 pesos por CDR.
       </p>
       <p>
-        En papel la posición quedó 160 pesos abajo, pero eso es lo de menos: descontando la
-        comisión de venta el resultado real es <strong>914 pesos en contra</strong>, un 1,58 %.
-        Cerró por debajo del punto de equilibrio (14.600) el mismo día de la compra — le falta
-        subir apenas 1,6 % para empatar. Ningún disparador cerca: para tomar ganancia (+20 %
-        real) faltan 21,9 % hasta 17.520; para cortar pérdida (−15 % real) faltan 13,6 % hasta
-        12.410.
-      </p>
-      <p>
-        Lo importante del día no fue el precio: fue que ya están escritos los dos números que
-        van a decidir cuándo sale. <strong>17.520 para arriba, 12.410 para abajo.</strong>
-        Fijados con la cabeza fría, dieciséis días antes del balance de NVIDIA. Eso es lo que
-        separa invertir de apostar.
+        Resultado del día: <strong>en papel Francisco quedó a cero</strong> (la app del broker
+        va a mostrar 0 ARS), pero descontando la comisión de venta el resultado real es
+        <strong>−755 pesos, un 1,30 %</strong>. Es la mitad de la pérdida de ayer. Sigue por
+        debajo del punto de equilibrio (14.600): le falta subir 1,32 % para empatar de verdad.
+        Ningún disparador cerca — para tomar ganancia (+20 % real) faltan 21,58 % hasta 17.520,
+        para cortar pérdida (−15 % real) faltan 13,88 % hasta 12.410. Quedan 15 días para el
+        balance de NVIDIA del 26/08.
       </p>
     </div>
   </section>
@@ -1126,9 +1112,9 @@
 
     <ul class="todo">
       <li>
-        <span><strong>El IPC de julio.</strong> Sale el 13 de agosto. Con ese dato la meta
-        ajustada deja de apoyarse en un supuesto del 2 % y pasa a usar el número real del
-        INDEC.</span>
+        <span><strong>El IPC de julio.</strong> Sale el jueves 13 de agosto (pasado mañana). Con
+        ese dato la meta ajustada deja de apoyarse en un supuesto del 2 % y pasa a usar el
+        número real del INDEC.</span>
       </li>
       <li>
         <span><strong>El gráfico de evolución.</strong> Con unas dos semanas de datos el
@@ -1142,7 +1128,7 @@
   <section>
     <div class="sec-head">
       <h2>Historial</h2>
-      <span class="aside">1 registro</span>
+      <span class="aside">2 registros</span>
     </div>
 
     <div class="table-scroll">
@@ -1170,26 +1156,37 @@
             <td>57.480</td>
             <td class="neg">−914</td>
           </tr>
+          <tr>
+            <td>11/08</td>
+            <td>14.410</td>
+            <td class="pos">+0,28 %</td>
+            <td>217,50</td>
+            <td class="neg">−0,02 %</td>
+            <td>1.590,07</td>
+            <td>57.640</td>
+            <td class="neg">−755</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
     <p class="prose">
-      Una sola fila todavía. Con unas dos semanas de datos vamos a poder graficar la
-      evolución y, sobre todo, ver cuál de los dos motores viene mandando.
+      Dos filas, dos días muy distintos. El lunes NVIDIA arrastró al CDR para abajo con el
+      dólar casi quieto; hoy fue al revés, NVIDIA quieta y el dólar aportando todo. Es el
+      punto pedagógico del proyecto puesto en dos renglones consecutivos.
     </p>
   </section>
 
   <footer>
     <p>
       <strong>Cómo se calcula el CCL implícito:</strong> precio del CDR en pesos × 24 ÷
-      precio de NVIDIA en dólares. Hoy: 14.370 × 24 ÷ 217,55 = 1.585,29 pesos por dólar.
+      precio de NVIDIA en dólares. Hoy: 14.410 × 24 ÷ 217,50 = 1.590,07 pesos por dólar.
     </p>
     <p>
-      El valor en dólares de la posición sale de multiplicar 0,1667 acciones × 217,55 USD.
-      El costo en dólares es una estimación: no conocemos el CCL exacto del momento de la
-      compra, así que el día 1 el resultado en pesos y en dólares coincide por construcción.
-      Desde mañana se separan y ahí el dato empieza a servir.
+      El valor en dólares de la posición sale de multiplicar 0,1667 acciones × 217,50 USD =
+      36,25 USD. En pesos vale lo mismo que pagó, pero en dólares vale un poco menos: el dólar
+      subió y NVIDIA no acompañó. Ahí se ve que el CDR no es sólo un pedazo de NVIDIA —
+      también carga con lo que hace la moneda.
     </p>
     <p>
       Fuentes: <a href="https://www.rava.com/perfil/NVDA">Rava Bursátil</a> (CDR),
