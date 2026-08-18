@@ -66,12 +66,15 @@ Aporte de **30.000 por mes, en la primera semana de cada mes**.
 |---|---|
 | Avance | 14,5 % (58.018 de 400.000) |
 | Próximo aporte | 1 al 7 de septiembre de 2026 |
-| Plazo con aporte ajustado por inflación | 12 meses |
-| Plazo con aporte fijo en 30.000 | 13 meses |
-| Meta nominal estimada | ≈ 517.440 ARS |
+| Plazo si ajusta el aporte por inflación | 11,4 meses → **12 aportes** |
+| Plazo si deja el aporte fijo en 30.000 | 13,2 meses → **14 aportes** |
+| Meta nominal estimada | ≈ 535.082 ARS |
 
-Supuesto de inflación: **2,0 % mensual** (REM del BCRA, junio 2026). Último dato real del
-INDEC: 1,9 % mensual, 33,5 % interanual (junio 2026).
+Inflación: **2,1 % mensual**, dato real del IPC del INDEC de julio 2026 (33,8 % interanual,
+19,3 % acumulado en 2026). Ya no es un supuesto del REM.
+
+**No ajustar el aporte cuesta dos aportes extra**, no uno. Con 2,1 % mensual, los 30.000
+pierden poder de compra más rápido de lo que se creía con el 2,0 % supuesto.
 
 **Regla mensual:** cuando el INDEC publica el IPC (alrededor del día 13), actualizar el bloque
 `meta.inflacion` de `posicion.json` con el dato real y recalcular la meta nominal.
@@ -92,9 +95,37 @@ plataforma de Artifacts le agregaba el esqueleto sola; Pages no hace eso.
 
 ## Automatización
 
-Una tarea del Programador de tareas de Windows llamada **«Bitacora NVDA - reporte diario»**
-ejecuta `reporte-diario.ps1` los días hábiles a las **17:35**. Corre como usuario común, sin
-privilegios elevados, y con recuperación si la compu estuvo apagada.
+La tarea **«Bitacora NVDA - reporte diario»** del Programador de tareas de Windows ejecuta
+`reporte-diario.ps1`. Corre como usuario común, sin privilegios elevados.
+
+**Dos disparadores**, porque uno solo no alcanzaba:
+
+| Disparador | Cuándo | Para qué |
+|---|---|---|
+| Diario | Días hábiles 17:35 | La rueda del día (BYMA cierra 17:00) |
+| Al iniciar sesión | 5 min después de prender | Recuperar lo que se haya perdido |
+
+Más `WakeToRun` (despierta la máquina si está suspendida) y `StartWhenAvailable` (si se pasó
+la hora, corre apenas puede).
+
+### Ninguna rueda se pierde
+
+El 14/08/2026 se perdió un día entero: la compu estaba apagada a las 17:35 y nadie lo notó
+hasta el lunes. Para que no vuelva a pasar, la corrida **recupera sola los días faltantes**.
+
+Al arrancar evalúa tres motivos para trabajar, y le basta con **uno**:
+
+1. Hoy hay rueda y todavía no se registró.
+2. Faltan ruedas viejas en el historial → las recupera una por una, de la más vieja a la más
+   nueva, con el histórico de Rava y el de StockAnalysis.
+3. El tablero quedó atrasado respecto del CSV → lo regenera y publica.
+
+Si no se cumple ninguno, sale en un segundo sin gastar nada. Por eso el disparador de inicio
+de sesión es barato: casi siempre no hay nada que hacer.
+
+**Los datos recuperados nunca se estiman.** Si un día no se consiguen los precios reales, esa
+fila queda sin cargar y se dice en la nota. Y toda fila recuperada lleva anotado en su nota
+que se cargó después y de dónde salieron los precios.
 
 ```powershell
 Get-ScheduledTaskInfo -TaskName 'Bitacora NVDA - reporte diario'   # cuándo corrió / cuándo corre
@@ -121,14 +152,20 @@ Disable-ScheduledTask  -TaskName 'Bitacora NVDA - reporte diario'  # apagarla
 
 1. **La línea que escribe Claude** al final del log: `CLAUDE OK | CDR ... | push ok`.
 2. **La última fila de `historial.csv`** — si tiene la fecha de hoy, corrió.
-3. **El aviso automático** — si falta la rueda anterior, la corrida siguiente lo escribe en el
-   log al arrancar. Un día perdido no pasa desapercibido más de 24 horas.
+3. **La recuperación automática** — si falta una rueda, la corrida siguiente la detecta, la
+   carga y lo deja anotado en el log. Ya no hace falta vigilar: un día perdido se recupera
+   solo en cuanto la compu vuelva a estar prendida.
 
 ```powershell
 Get-Content 'C:\Users\Usuario\Desktop\10_Finanzas\historial.csv' | Select-Object -Last 1
 ```
 
 ## Procedimiento diario
+
+0. **Antes que nada: ¿falta alguna rueda?** Comparar la última fecha de `historial.csv` con
+   hoy. Si hay días hábiles sin registrar, recuperarlos primero, del más viejo al más nuevo,
+   con el histórico de Rava y https://stockanalysis.com/stocks/nvda/history/. Nunca estimar:
+   si no hay dato real, la fila no se carga y se dice en la nota.
 
 1. **Buscar los tres precios**
    - CDR NVDA en pesos: https://www.rava.com/perfil/NVDA

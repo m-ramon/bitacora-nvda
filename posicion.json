@@ -43,22 +43,24 @@
     "avance_pct": 14.5,
     "falta_ars": 341982.46,
     "inflacion": {
-      "supuesto_mensual_pct": 2.0,
-      "supuesto_fuente": "REM del BCRA, relevamiento de junio 2026",
-      "ultimo_dato_indec_mensual_pct": 1.9,
-      "ultimo_dato_indec_periodo": "junio 2026",
-      "ultimo_dato_indec_interanual_pct": 33.5,
-      "proximo_dato": "IPC de julio 2026, publica INDEC el 13/08/2026",
-      "_regla": "Actualizar este bloque cada mes con el dato real del INDEC y recalcular la meta nominal."
+      "supuesto_mensual_pct": 2.1,
+      "supuesto_fuente": "IPC INDEC de julio 2026 (dato real, ya no un supuesto del REM)",
+      "ultimo_dato_indec_mensual_pct": 2.1,
+      "ultimo_dato_indec_periodo": "julio 2026",
+      "ultimo_dato_indec_interanual_pct": 33.8,
+      "proximo_dato": "IPC de agosto 2026, publica INDEC alrededor del 11/09/2026",
+      "_regla": "Actualizar este bloque cada mes con el dato real del INDEC y recalcular la meta nominal.",
+      "acumulado_2026_pct": 19.3
     },
     "plazo_estimado": {
       "con_aporte_ajustado_por_inflacion_meses": 12,
-      "con_aporte_fijo_en_30000_meses": 13,
+      "con_aporte_fijo_en_30000_meses": 14,
       "_supuesto": "La inversion mantiene su valor real (los CDR siguen al dolar). Si NVIDIA rinde por encima de la inflacion, mas rapido; si cae, mas lento.",
-      "fecha_estimada": "agosto / septiembre 2027"
+      "fecha_estimada": "agosto 2027 si ajusta el aporte; octubre 2027 si lo deja fijo",
+      "_meses_exactos": "11,4 con aporte ajustado por inflacion (12 aportes); 13,2 con aporte fijo en 30.000 (14 aportes). No ajustar el aporte cuesta DOS aportes extra, no uno."
     },
-    "meta_nominal_estimada_ars": 517440,
-    "_nota_meta_nominal": "Lo que tiene que marcar la cuenta en 13 meses para valer 400.000 de hoy, al 2% mensual. Recalcular con cada dato del INDEC."
+    "meta_nominal_estimada_ars": 535082,
+    "_nota_meta_nominal": "Lo que tiene que marcar la cuenta en 14 meses para valer 400.000 de hoy, al 2,1% mensual (IPC INDEC de julio 2026). Recalcular con cada dato nuevo del INDEC."
   },
   "objetivos": {
     "_definidos_por": "Francisco, 10/08/2026",

@@ -36,7 +36,7 @@ $Proyecto    = 'C:\Users\Usuario\Desktop\10_Finanzas'
 $Logs        = Join-Path $Proyecto 'logs'
 $Historial   = Join-Path $Proyecto 'historial.csv'
 $PagesUrl    = 'https://m-ramon.github.io/bitacora-nvda/'
-$TimeoutMin  = 12
+$TimeoutMin  = 25   # mas alto que antes: recuperar varios dias lleva su tiempo
 
 # Que git no abra ningun dialogo de credenciales: si no tiene el token
 # cacheado tiene que fallar rapido, no quedarse esperando a nadie.
@@ -54,19 +54,19 @@ function Log($msg) {
 
 Log "=== Inicio de la corrida diaria ==="
 
-# --- No correr los fines de semana -----------------------------------
-$dia = (Get-Date).DayOfWeek
-if ($dia -eq 'Saturday' -or $dia -eq 'Sunday') {
-    Log "Fin de semana ($dia). BYMA no opera. No se genera reporte."
-    exit 0
-}
+# --- Que hay para hacer? ---------------------------------------------
+# Tres motivos posibles para correr, y basta con UNO:
+#   a) hoy hay rueda y todavia no se registro
+#   b) faltan ruedas viejas (la compu estuvo apagada) -> hay que recuperarlas
+#   c) el tablero quedo atrasado respecto del CSV
+# Antes se salia temprano por fin de semana o por "ya corrio hoy", y eso
+# hacia que un dia perdido no se recuperara NUNCA.
 
-# --- Se salteo algun dia? --------------------------------------------
-# El envoltorio a veces muere al final sin poder escribir el log (ver
-# nota tecnica del README), asi que no se puede confiar en el log del
-# dia para saber si anduvo. La prueba real es el CSV: si falta la fila
-# de la rueda anterior, avisamos ACA, al principio de la corrida
-# siguiente. Un dia perdido nunca pasa desapercibido mas de 24 horas.
+$Index = Join-Path $Proyecto 'index.html'
+$esFinde = ((Get-Date).DayOfWeek -eq 'Saturday') -or ((Get-Date).DayOfWeek -eq 'Sunday')
+
+# (b) faltan ruedas?
+$hayFaltantes = $false
 if (Test-Path $Historial) {
     $fechas = Get-Content $Historial -Encoding utf8 |
               Select-Object -Skip 1 |
@@ -75,34 +75,43 @@ if (Test-Path $Historial) {
 
     if ($fechas) {
         $ultima = ($fechas | Sort-Object)[-1]
-
-        # Rueda anterior: el dia habil previo a hoy.
         $previa = (Get-Date).Date.AddDays(-1)
         while ($previa.DayOfWeek -eq 'Saturday' -or $previa.DayOfWeek -eq 'Sunday') {
             $previa = $previa.AddDays(-1)
         }
-
         if ($ultima.Date -lt $previa) {
+            $hayFaltantes = $true
             $faltan = [int]($previa - $ultima.Date).TotalDays
-            Log "AVISO: el ultimo registro es del $($ultima.ToString('yyyy-MM-dd')). Faltan ruedas (unos $faltan dias). Revisar si la compu estuvo apagada."
+            Log "FALTAN RUEDAS: el ultimo registro es del $($ultima.ToString('yyyy-MM-dd')) y la rueda anterior fue el $($previa.ToString('yyyy-MM-dd')) (unos $faltan dias). Se van a recuperar en esta corrida."
         }
     }
 }
 
-# --- Ya corrio hoy? --------------------------------------------------
-# Solo se saltea si la fila de hoy ya es de CIERRE. Si quedo una fila
-# intradiaria (de una corrida a mercado abierto), hay que reemplazarla
-# por los datos del cierre.
+# (c) tablero atrasado respecto del CSV?
+$tableroViejo = $false
+if ((Test-Path $Index) -and (Test-Path $Historial)) {
+    $tableroViejo = (Get-Item $Historial).LastWriteTimeUtc -gt (Get-Item $Index).LastWriteTimeUtc
+    if ($tableroViejo) { Log "El tablero esta atrasado respecto del historial. Se regenera." }
+}
+
+# (a) ya se registro el cierre de hoy?
 $filaHoy = $null
 if (Test-Path $Historial) {
     $filaHoy = Select-String -Path $Historial -Pattern "^$hoy," | Select-Object -First 1
 }
-if ($filaHoy -and $filaHoy.Line -match "^$hoy,[^,]*,cierre,") {
-    Log "El historial ya tiene la fila de cierre de $hoy. No se vuelve a correr."
+$hoyListo = ($filaHoy -and $filaHoy.Line -match "^$hoy,[^,]*,cierre,")
+if ($filaHoy -and -not $hoyListo) {
+    Log "Hay una fila intradiaria de $hoy. Se va a reemplazar por los datos del cierre."
+}
+
+# Nada que hacer?
+if ($esFinde -and -not $hayFaltantes -and -not $tableroViejo) {
+    Log "Fin de semana y no falta nada. BYMA no opera. Sin trabajo."
     exit 0
 }
-if ($filaHoy) {
-    Log "Hay una fila intradiaria de $hoy. Se va a reemplazar por los datos del cierre."
+if ($hoyListo -and -not $hayFaltantes -and -not $tableroViejo) {
+    Log "El historial ya tiene la fila de cierre de $hoy y no falta nada mas. Sin trabajo."
+    exit 0
 }
 
 # --- La instruccion para Claude --------------------------------------
@@ -116,14 +125,32 @@ Ejecuta el reporte diario de la bitacora NVDA.
 3. El tablero es index.html. Es un documento HTML COMPLETO (doctype, head con charset y
    viewport). Al regenerarlo NO le saques el esqueleto: sin el, el celular de Francisco lo
    muestra diminuto y se rompen los acentos.
-4. Si hoy BYMA no opero (feriado), NO agregues fila al CSV ni toques index.html: explica por
-   que y termina.
-5. Si algun precio no se consigue, no lo estimes ni lo copies del dia anterior. Deja el
+4. RECUPERAR DIAS FALTANTES. Antes de nada, compara la ultima fecha de historial.csv contra
+   hoy. Si faltan ruedas en el medio (la compu pudo haber estado apagada), RECUPERALAS una
+   por una ANTES de hacer la de hoy, de la mas vieja a la mas nueva:
+     - CDR: la ficha de Rava muestra la ultima rueda operada; para dias mas viejos usar el
+       historico de Rava.
+     - NVIDIA: https://stockanalysis.com/stocks/nvda/history/ tiene el cierre de cada dia.
+     - Si un dia no fue rueda (feriado o fin de semana), NO inventes fila: saltealo.
+     - Si de plano no conseguis los datos de un dia, dejalo sin fila y decilo en la nota.
+       Nunca estimes un precio ni copies el del dia anterior.
+     - En la nota de una fila recuperada, aclara SIEMPRE que se recupero despues y de donde
+       salieron los precios.
+   Ninguna rueda se puede perder: si un dia no entro a tiempo, entra despues.
+
+5. Si hoy BYMA no opero (feriado o fin de semana), no agregues fila de hoy. PERO igual
+   revisa el paso 4 y el paso 6: puede haber dias viejos para recuperar o el tablero puede
+   estar desactualizado.
+6. Si algun precio no se consigue, no lo estimes ni lo copies del dia anterior. Deja el
    campo vacio y decilo en la nota del dia.
-6. Si historial.csv YA tiene una fila de hoy con estado 'intradiario', REEMPLAZALA por los
+7. Si historial.csv YA tiene una fila de hoy con estado 'intradiario', REEMPLAZALA por los
    datos del cierre (estado 'cierre'). No agregues una fila duplicada para el mismo dia.
 
-7. PUBLICAR. Cuando el reporte este listo, hace commit y push con Bash:
+7b. EL TABLERO NUNCA QUEDA ATRASADO. Aunque hoy no haya rueda, si index.html no refleja
+   la ULTIMA fila de historial.csv (por ejemplo porque se recupero un dia viejo), regeneralo
+   igual y publicalo. El tablero siempre muestra la ultima rueda registrada.
+
+8. PUBLICAR. Cuando el reporte este listo, hace commit y push con Bash:
 
       git add -A
       git commit -m "Reporte del <fecha>"
@@ -131,9 +158,9 @@ Ejecuta el reporte diario de la bitacora NVDA.
 
    Esto es lo que actualiza la pagina que ve Francisco ($PagesUrl).
    Sin push, el reporte queda solo en esta compu y el no ve nada nuevo.
-   Si el push falla, anotalo en el log del paso 8 con las palabras PUSH FALLIDO.
+   Si el push falla, anotalo en el log del paso 9 con las palabras PUSH FALLIDO.
 
-8. IMPRESCINDIBLE, HACELO SIEMPRE AL FINAL. Cuando termines todo lo anterior, AGREGA una
+9. IMPRESCINDIBLE, HACELO SIEMPRE AL FINAL. Cuando termines todo lo anterior, AGREGA una
    linea al final del archivo de log:
 
       $logFile
