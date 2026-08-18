@@ -201,7 +201,10 @@ Get-Content 'C:\Users\Usuario\Desktop\10_Finanzas\historial.csv' | Select-Object
    fila de hoy en estado `intradiario`, **reemplazarla** — nunca duplicar el día. Las filas de
    días anteriores no se tocan.
 
-5. **Regenerar `index.html`** con los datos nuevos, conservando el esqueleto HTML completo y la
+5. **Regenerar `index.html`**. La tabla de Historial tiene que listar **TODAS** las filas de
+   `historial.csv`, sin excepción — es fácil regenerar el resto del tablero y olvidarse de
+   agregar la fila nueva a esa tabla (ya pasó una vez con un día recuperado). El contador de
+   «N registros» tiene que coincidir con la cantidad de filas. con los datos nuevos, conservando el esqueleto HTML completo y la
    estructura: masthead → resultado → los dos motores → rango del día → contexto de NVIDIA →
    costos → objetivos → meta → nota del día → pendientes → historial → pie. Actualizar el
    contador de «Día N», el de registros, y la posición del marcador «Hoy» en el termómetro.
