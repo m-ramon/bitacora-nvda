@@ -37,9 +37,9 @@
     "estrategia": "acumulacion con aportes mensuales",
     "aporte_mensual_ars": 30000,
     "aporte_cuando": "primera semana de cada mes (dias 1 al 7)",
-    "aporte_proximo": "2026-10-01 al 2026-10-07",
+    "aporte_proximo": "2026-11-01 al 2026-11-07",
     "_aporte_recordatorio": "Los dias 1 al 7 de cada mes, el reporte diario debe recordar el aporte y avisar si todavia no se registro.",
-    "_aportes_pendientes": "APORTE DE SEPTIEMBRE 2026 NUNCA REGISTRADO: la ventana del 01 al 07/09 vencio sin novedad y la bitacora estuvo caida del 05/09 al 05/10 por sesion de Claude Code expirada. El de octubre sigue abierto y vence el 07/10/2026.",
+    "_aportes_pendientes": "DOS APORTES SIN REGISTRAR. Septiembre 2026: la ventana del 01 al 07/09 vencio sin novedad, con la bitacora caida del 05/09 al 05/10 por sesion de Claude Code expirada. Octubre 2026: la ventana del 01 al 07/10 se cerro el 07/10 sin que se registrara el aporte (al cierre de la rueda de ese dia seguia sin entrar). Hay que decidir si se recuperan los dos, uno, o se da el calendario por corrido dos meses. 'aportado_hasta_ahora_ars' sigue siendo solo el costo de la compra inicial.",
     "aportado_hasta_ahora_ars": 58017.54,
     "avance_pct": 14.5,
     "falta_ars": 341982.46,
@@ -61,7 +61,7 @@
       "_supuesto": "La inversion mantiene su valor real (los CDR siguen al dolar). Si NVIDIA rinde por encima de la inflacion, mas rapido; si cae, mas lento.",
       "fecha_estimada": "agosto 2027 si ajusta el aporte; septiembre 2027 si lo deja fijo",
       "_meses_exactos": "11,4 con aporte ajustado por inflacion (12 aportes); 12,8 con aporte fijo en 30.000 (13 aportes). Con el IPC de agosto (1,7%) no ajustar el aporte cuesta UN aporte extra; con el 2,1% de julio costaba DOS. La desaceleracion de la inflacion abarata el costo de dejar el aporte fijo.",
-      "_ojo": "Estos plazos suponen que se hace UN aporte por mes sin faltar. El de septiembre 2026 no se hizo, asi que el calendario real ya corre un mes atrasado respecto de este estimado."
+      "_ojo": "Estos plazos suponen que se hace UN aporte por mes sin faltar. Los de septiembre y octubre 2026 no se hicieron, asi que el calendario real ya corre DOS meses atrasado respecto de este estimado."
     },
     "meta_nominal_estimada_ars": 498003,
     "_nota_meta_nominal": "Lo que tiene que marcar la cuenta en 13 meses para valer 400.000 de hoy, al 1,7% mensual (IPC INDEC de agosto 2026). Bajo desde 535.082 porque la inflacion desacelero de 2,1% a 1,7%. Recalcular con cada dato nuevo del INDEC."
