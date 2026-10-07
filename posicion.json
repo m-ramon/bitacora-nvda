@@ -37,30 +37,34 @@
     "estrategia": "acumulacion con aportes mensuales",
     "aporte_mensual_ars": 30000,
     "aporte_cuando": "primera semana de cada mes (dias 1 al 7)",
-    "aporte_proximo": "2026-09-01 al 2026-09-07",
+    "aporte_proximo": "2026-10-01 al 2026-10-07",
     "_aporte_recordatorio": "Los dias 1 al 7 de cada mes, el reporte diario debe recordar el aporte y avisar si todavia no se registro.",
+    "_aportes_pendientes": "APORTE DE SEPTIEMBRE 2026 NUNCA REGISTRADO: la ventana del 01 al 07/09 vencio sin novedad y la bitacora estuvo caida del 05/09 al 05/10 por sesion de Claude Code expirada. El de octubre sigue abierto y vence el 07/10/2026.",
     "aportado_hasta_ahora_ars": 58017.54,
     "avance_pct": 14.5,
     "falta_ars": 341982.46,
     "inflacion": {
-      "supuesto_mensual_pct": 2.1,
-      "supuesto_fuente": "IPC INDEC de julio 2026 (dato real, ya no un supuesto del REM)",
-      "ultimo_dato_indec_mensual_pct": 2.1,
-      "ultimo_dato_indec_periodo": "julio 2026",
-      "ultimo_dato_indec_interanual_pct": 33.8,
-      "proximo_dato": "IPC de agosto 2026, publica INDEC alrededor del 11/09/2026",
+      "supuesto_mensual_pct": 1.7,
+      "supuesto_fuente": "IPC INDEC de agosto 2026 (dato real)",
+      "ultimo_dato_indec_mensual_pct": 1.7,
+      "ultimo_dato_indec_periodo": "agosto 2026",
+      "ultimo_dato_indec_interanual_pct": 33.5,
+      "ultimo_dato_indec_publicado": "2026-09-10",
+      "proximo_dato": "IPC de septiembre 2026, publica INDEC alrededor del 13/10/2026",
       "_regla": "Actualizar este bloque cada mes con el dato real del INDEC y recalcular la meta nominal.",
-      "acumulado_2026_pct": 19.3
+      "acumulado_2026_pct": 21.3,
+      "_historia": "julio 2026: 2,1% mensual / 33,8% interanual / 19,3% acumulado. Agosto desacelero cuatro decimas."
     },
     "plazo_estimado": {
       "con_aporte_ajustado_por_inflacion_meses": 12,
-      "con_aporte_fijo_en_30000_meses": 14,
+      "con_aporte_fijo_en_30000_meses": 13,
       "_supuesto": "La inversion mantiene su valor real (los CDR siguen al dolar). Si NVIDIA rinde por encima de la inflacion, mas rapido; si cae, mas lento.",
-      "fecha_estimada": "agosto 2027 si ajusta el aporte; octubre 2027 si lo deja fijo",
-      "_meses_exactos": "11,4 con aporte ajustado por inflacion (12 aportes); 13,2 con aporte fijo en 30.000 (14 aportes). No ajustar el aporte cuesta DOS aportes extra, no uno."
+      "fecha_estimada": "agosto 2027 si ajusta el aporte; septiembre 2027 si lo deja fijo",
+      "_meses_exactos": "11,4 con aporte ajustado por inflacion (12 aportes); 12,8 con aporte fijo en 30.000 (13 aportes). Con el IPC de agosto (1,7%) no ajustar el aporte cuesta UN aporte extra; con el 2,1% de julio costaba DOS. La desaceleracion de la inflacion abarata el costo de dejar el aporte fijo.",
+      "_ojo": "Estos plazos suponen que se hace UN aporte por mes sin faltar. El de septiembre 2026 no se hizo, asi que el calendario real ya corre un mes atrasado respecto de este estimado."
     },
-    "meta_nominal_estimada_ars": 535082,
-    "_nota_meta_nominal": "Lo que tiene que marcar la cuenta en 14 meses para valer 400.000 de hoy, al 2,1% mensual (IPC INDEC de julio 2026). Recalcular con cada dato nuevo del INDEC."
+    "meta_nominal_estimada_ars": 498003,
+    "_nota_meta_nominal": "Lo que tiene que marcar la cuenta en 13 meses para valer 400.000 de hoy, al 1,7% mensual (IPC INDEC de agosto 2026). Bajo desde 535.082 porque la inflacion desacelero de 2,1% a 1,7%. Recalcular con cada dato nuevo del INDEC."
   },
   "objetivos": {
     "_definidos_por": "Francisco, 10/08/2026",
@@ -89,10 +93,13 @@
     "ipc": "https://www.indec.gob.ar/"
   },
   "referencia": {
-    "nvda_52s_min": 164.07,
-    "nvda_52s_max": 236.54,
-    "nvda_per": 34.3,
-    "nvda_market_cap_usd": "5.30T",
-    "proximo_balance": "2026-08-26"
+    "nvda_52s_min": 164.27,
+    "nvda_52s_max": 243.37,
+    "_nota_52s": "Maximo actualizado el 06/10/2026: NVIDIA toco 243,37 intradiario ese dia, nuevo maximo de 52 semanas (el anterior era 236,54). El minimo paso de 164,07 a 164,27 porque la ventana de 52 semanas se corrio. Fuente: stockanalysis.com/stocks/nvda/",
+    "nvda_per": 30.21,
+    "nvda_per_forward": 19.75,
+    "nvda_market_cap_usd": "5.78T",
+    "ultimo_balance": "2026-08-26 (resultados record)",
+    "proximo_balance": "2026-11-18"
   }
 }

@@ -5,7 +5,7 @@
 #  a las 17:35 (BYMA cierra 17:00).
 #
 #  Para probarlo a mano, desde PowerShell:
-#     & "C:\Users\Usuario\Desktop\10_Finanzas\reporte-diario.ps1"
+#     & "C:\Users\maria\Codigo\10_Finanzas\reporte-diario.ps1"
 #
 #  NOTA TECNICA: el prompt se le pasa a Claude por entrada estandar
 #  (stdin), NO como argumento de linea de comandos. Si se pasa como
@@ -32,7 +32,7 @@ catch {
     # Si falla no es fatal: el reporte se genera igual, se pierde el log final.
 }
 
-$Proyecto    = 'C:\Users\Usuario\Desktop\10_Finanzas'
+$Proyecto    = $PSScriptRoot   # la carpeta del propio script: no se rompe si se mueve
 $Logs        = Join-Path $Proyecto 'logs'
 $Historial   = Join-Path $Proyecto 'historial.csv'
 $PagesUrl    = 'https://m-ramon.github.io/bitacora-nvda/'
@@ -186,22 +186,16 @@ Set-Content -Path $promptFile -Value $prompt -Encoding utf8
 $salida  = Join-Path $Logs "$hoy.salida.txt"
 $errores = Join-Path $Logs "$hoy.errores.txt"
 
-# --- Ubicar node.exe y el cli.js de Claude ---------------------------
+# --- Ubicar el claude.exe ---------------------------------------------
 # NO usar claude.cmd: ese wrapper batch hace 'title %COMSPEC%' y otros
 # trucos que necesitan una consola real. Como la tarea programada corre
 # sin ventana, el batch muere con STATUS_CONTROL_C_EXIT (0xC000013A) y
-# Claude nunca llega a arrancar. Llamando a node directamente sobre
-# cli.js el problema desaparece.
-$NodeExe = (Get-Command node -ErrorAction SilentlyContinue).Source
-if (-not $NodeExe) { $NodeExe = 'C:\Program Files\nodejs\node.exe' }
-$ClaudeCli = Join-Path $env:APPDATA 'npm\node_modules\@anthropic-ai\claude-code\cli.js'
+# Claude nunca llega a arrancar. Las versiones nuevas de Claude Code ya
+# no traen cli.js sino un ejecutable nativo: se lo llama directamente.
+$ClaudeExe = Join-Path $env:APPDATA 'npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe'
 
-if (-not (Test-Path $NodeExe)) {
-    Log "ERROR: no se encontro node.exe en '$NodeExe'."
-    exit 1
-}
-if (-not (Test-Path $ClaudeCli)) {
-    Log "ERROR: no se encontro el cli.js de Claude en '$ClaudeCli'."
+if (-not (Test-Path $ClaudeExe)) {
+    Log "ERROR: no se encontro claude.exe en '$ClaudeExe'."
     exit 1
 }
 
@@ -211,8 +205,8 @@ if (-not (Test-Path $ClaudeCli)) {
 # Claude llegue a arrancar. System.Diagnostics.Process no depende de la
 # consola y funciona igual con ventana o sin ella.
 $psi = New-Object System.Diagnostics.ProcessStartInfo
-$psi.FileName               = $NodeExe
-$psi.Arguments              = '"{0}" -p --allowedTools WebFetch,WebSearch,Read,Write,Edit,Bash --permission-mode acceptEdits' -f $ClaudeCli
+$psi.FileName               = $ClaudeExe
+$psi.Arguments              = '-p --allowedTools WebFetch,WebSearch,Read,Write,Edit,Bash --permission-mode acceptEdits'
 $psi.WorkingDirectory       = $Proyecto
 $psi.UseShellExecute        = $false
 $psi.CreateNoWindow         = $true

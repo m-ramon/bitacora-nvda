@@ -17,6 +17,7 @@ Proyecto de Mariano y Francisco. Seguimiento de 4 CDR de NVIDIA comprados el 10/
 | `historial.csv` | Una fila por día. Es la base de datos. |
 | `posicion.json` | Ficha de la posición: compra, ratio, costos, meta, objetivos. Se edita a mano. |
 | `reporte-diario.ps1` | El script que corre solo todos los días. |
+| `gen_tabla.py` | Ayudante. Desde `historial.csv` escribe el `<tbody>` del historial en `tbody.html` e imprime toda la geometría del día (barras, marcadores, termómetro) ya calculada con las fórmulas de más abajo. Sirve para no hacer esas cuentas a mano ni olvidarse una fila. |
 | `logs/` | Un log por día de cada corrida. No se versiona. |
 
 ## Datos de referencia
@@ -157,7 +158,7 @@ Disable-ScheduledTask  -TaskName 'Bitacora NVDA - reporte diario'  # apagarla
    solo en cuanto la compu vuelva a estar prendida.
 
 ```powershell
-Get-Content 'C:\Users\Usuario\Desktop\10_Finanzas\historial.csv' | Select-Object -Last 1
+Get-Content 'C:\Users\maria\Codigo\10_Finanzas\historial.csv' | Select-Object -Last 1
 ```
 
 ## Procedimiento diario
