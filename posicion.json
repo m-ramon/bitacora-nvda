@@ -96,10 +96,10 @@
     "nvda_52s_min": 164.27,
     "nvda_52s_max": 243.37,
     "_nota_52s": "Maximo actualizado el 06/10/2026: NVIDIA toco 243,37 intradiario ese dia, nuevo maximo de 52 semanas (el anterior era 236,54). El minimo paso de 164,07 a 164,27 porque la ventana de 52 semanas se corrio. Fuente: stockanalysis.com/stocks/nvda/",
-    "nvda_per": 27.08,
-    "nvda_per_forward": 17.7,
-    "nvda_market_cap_usd": "5.17T",
-    "_nota_valuacion": "Actualizado el 19/10/2026 con el cierre del 16/10 (214,13 USD). El PER bajo de 30,2 a 27,1 por la caida del precio, no por un balance nuevo. Fuente: stockanalysis.com/stocks/nvda/",
+    "nvda_per": 27.45,
+    "nvda_per_forward": 17.94,
+    "nvda_market_cap_usd": "5.24T",
+    "_nota_valuacion": "Actualizado el 20/10/2026 con el cierre del 19/10 (217,09 USD). El PER subio de 27,08 a 27,45 por la suba del precio: la ganancia por accion es la misma (el proximo balance es el 18/11), asi que los tres valores son los del 16/10 reescalados por 217,09/214,13 = 1,01382. De referencia, el 20/10 a las 10:43 StockAnalysis mostraba PER 27,01 / forward 17,66 / cap 5,16T sobre el precio intradiario de 213,50, que no es un cierre. Fuente: stockanalysis.com/stocks/nvda/",
     "ultimo_balance": "2026-08-26 (resultados record)",
     "proximo_balance": "2026-11-18"
   }
