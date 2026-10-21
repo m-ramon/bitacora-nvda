@@ -88,7 +88,7 @@
   "fuentes": {
     "cdr_ars": "https://www.rava.com/perfil/NVDA",
     "nvda_usd": "https://www.google.com/finance/quote/NVDA:NASDAQ",
-    "_ojo_nvda_usd": "AL 21/10/2026 Google Finance NO SIRVE: devuelve 'Google Finance isn't supported on this device' en vez de datos. El precio de NVDA en dolares se esta tomando de StockAnalysis. PENDIENTE: cambiar la fuente principal en el README y elegir una segunda fuente independiente de StockAnalysis para el cruce.",
+    "_ojo_nvda_usd": "AL 21/10/2026 Google Finance NO SIRVE: devuelve 'Google Finance isn't supported on this device' en vez de datos. Fallo en las DOS corridas del 21/10 (15:06 y 17:35), asi que no fue algo pasajero. El precio de NVDA en dolares se esta tomando de StockAnalysis. PENDIENTE URGENTE: cambiar la fuente principal en el README y elegir una segunda fuente independiente de StockAnalysis para el cruce; hoy el lado del dolar de NVDA entra con una sola fuente.",
     "nvda_fundamentals": "https://stockanalysis.com/stocks/nvda/",
     "aranceles_broker": "https://nacionbursatil.com.ar/assets/pdf/Tabla-de-Aranceles-y-Comisiones-2025_aprobados-Directorio-09-04-2025.pdf",
     "ipc": "https://www.indec.gob.ar/"
@@ -97,10 +97,10 @@
     "nvda_52s_min": 164.27,
     "nvda_52s_max": 243.37,
     "_nota_52s": "Maximo actualizado el 06/10/2026: NVIDIA toco 243,37 intradiario ese dia, nuevo maximo de 52 semanas (el anterior era 236,54). El minimo paso de 164,07 a 164,27 porque la ventana de 52 semanas se corrio. Fuente: stockanalysis.com/stocks/nvda/",
-    "nvda_per": 28.02,
-    "nvda_per_forward": 18.32,
-    "nvda_market_cap_usd": "5.35T",
-    "_nota_valuacion": "OJO, VALORES INTRADIARIOS: actualizado el 21/10/2026 a las 15:06 con el MERCADO ABIERTO (NVDA en 221,57 USD, 14:06 ET). NO son valores de cierre; la corrida de las 17:35 los tiene que reemplazar por los del cierre regular del 21/10. Valores leidos DIRECTO de la ficha de StockAnalysis, no reescalados: PER 28,02, forward 18,32, cap 5,35T. Subieron desde 27,37 / 17,90 / 5,23T solo por el precio; la ganancia por accion es la misma hasta el balance del 18/11. Dato cumplido: el after hours de 221,06 USD del 20/10 que se anoto como 'no es un cierre' SOBREVIVIO a la apertura (NVDA abrio en 220,96 el 21/10), y el CDR lo reflejo recien hoy. Fuente: stockanalysis.com/stocks/nvda/",
+    "nvda_per": 28.06,
+    "nvda_per_forward": 18.34,
+    "nvda_market_cap_usd": "5.36T",
+    "_nota_valuacion": "VALORES DE CIERRE: actualizado el 21/10/2026 con el cierre regular de las 16:00 ET (NVDA en 221,97 USD, +2,54%). Reemplazan los intradiarios de las 15:06 (221,57 USD / PER 28,02 / forward 18,32 / cap 5,35T) que esa corrida habia dejado cargados. Valores leidos DIRECTO de la ficha de StockAnalysis, no reescalados: PER 28,06, forward 18,34, cap 5,36T. Subieron desde 27,37 / 17,90 / 5,23T solo por el precio; la ganancia por accion es la misma hasta el balance del 18/11. Dato cumplido: el after hours de 221,06 USD del 20/10 que se anoto como 'no es un cierre' SOBREVIVIO a la apertura (NVDA abrio en 220,96 el 21/10) y cerro aun mas arriba, en 221,97; el CDR lo reflejo recien hoy. After hours del 21/10: 221,86 USD (-0,05%), practicamente plano, sin senal de gap para el 22/10. Fuente: stockanalysis.com/stocks/nvda/",
     "ultimo_balance": "2026-08-26 (resultados record)",
     "proximo_balance": "2026-11-18"
   }

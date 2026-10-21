@@ -670,6 +670,13 @@
 
   .todo strong { color: var(--ink); font-weight: 600; }
 
+  .todo li.done::before {
+    background: var(--brass);
+  }
+
+  .todo li.done { color: var(--ink-faint); }
+  .todo li.done strong { color: var(--ink-muted); }
+
   /* ---------- footer ---------- */
 
   footer {
@@ -699,34 +706,34 @@
     <p class="eyebrow">Bitácora · Día 51</p>
     <h1>NVIDIA CDR — la posición de Francisco</h1>
     <div class="stamp">
-      <span class="chip"><span class="dot"></span>Intradiario</span>
-      <span>Miércoles 21/10/2026 · rueda EN CURSO</span>
-      <span>·&nbsp;&nbsp;tomado con el mercado abierto, 15:06</span>
+      <span class="chip"><span class="dot"></span>Cierre</span>
+      <span>Miércoles 21/10/2026 · rueda cerrada</span>
+      <span>·&nbsp;&nbsp;BYMA cerró a las 17:00</span>
     </div>
   </header>
 
   <!-- ============ AVISO: AL DÍA ============ -->
   <div class="aviso">
-    <span class="aviso-lbl">Ojo · esto NO es un cierre · la rueda sigue abierta</span>
+    <span class="aviso-lbl">Al día · cierre definitivo · el intradiario quedó reemplazado</span>
     <p>
-      <strong>Todos los números de este tablero son provisorios.</strong> La toma se hizo hoy
-      miércoles 21/10 a las <strong>15:06</strong>, con <strong>BYMA todavía operando</strong> —la
-      rueda cierra a las 17:00— y con <strong>Nueva York también abierta</strong>. Lo que se ve es
-      una <em>foto del medio del partido</em>, no el resultado. Faltan casi dos horas de rueda y el
-      precio puede terminar bastante lejos de los 15.110 que marca ahora.
+      <strong>Este tablero ya es el cierre.</strong> A las 15:06 se había publicado una toma
+      <em>intradiaria</em> con la rueda abierta, y tal como estaba previsto
+      <strong>esa fila fue reemplazada</strong> —no se agregó otra, se pisó la misma— por los
+      datos definitivos del cierre. El mecanismo funcionó: es la primera vez que la bitácora
+      publica un tablero con la rueda abierta y después lo cierra el mismo día.
     </p>
     <p>
-      La corrida automática de las <strong>17:35</strong> va a <strong>reemplazar esta fila</strong>
-      por la del cierre definitivo —no se agrega otra, se pisa la misma— y el tablero se vuelve a
-      publicar con el chip en «Cierre». Mientras tanto, dos avisos concretos: el
-      <strong>volumen (372.058 nominales) es parcial</strong> y no se puede comparar con el de
-      ayer; y el <strong>rango del día (14.810–15.140) todavía puede ampliarse</strong> para
-      cualquiera de los dos lados.
+      Lo que cambió del provisorio al definitivo fue poco y todo para el mismo lado: el CDR
+      terminó en <strong>15.130</strong> contra los 15.110 de las 15:06 (20 pesos más), el
+      <strong>máximo del día se estiró de 15.140 a 15.170</strong>, el mínimo quedó igual en
+      14.810 y el <strong>volumen pasó de 372.058 a 491.680 nominales</strong> —ahora sí
+      comparable con el de ayer—. En Nueva York, NVIDIA cerró en <strong>221,97 USD</strong>
+      contra los 221,57 de la toma del mediodía.
     </p>
     <p>
-      <strong>No falta ninguna rueda</strong>: la última fila cerrada es la del martes 20/10 y el
-      historial cubre entero todo lo que operó BYMA desde la compra del 10/08.
-      <strong>Ningún precio se estimó.</strong>
+      <strong>No falta ninguna rueda</strong>: el historial cubre entero todo lo que operó BYMA
+      desde la compra del 10/08, y la última fila ya es la de hoy, en estado
+      <code>cierre</code>. <strong>Ningún precio se estimó.</strong>
     </p>
   </div>
 
@@ -740,12 +747,12 @@
       clavada en <strong>14,5 %</strong> desde la compra, en agosto. Lo que queda por decidir es
       concreto: <strong>si se recuperan los dos aportes fuera de plazo, si se recupera uno, o si
       el calendario se da por corrido dos meses</strong> — en ese último caso el plan termina dos
-      meses más tarde de lo estimado. Hoy, por una vez, el mercado está dando una buena noticia:
-      <strong>el CDR sube 2,65 % y el resultado real pasó de +477 a +2.027 pesos</strong>, cuatro
-      veces más en una sola rueda. Y justamente por eso conviene mirar la escala sin hacerse
-      ilusiones: esos 2.027 pesos son <em>todo</em> lo que la posición acumuló en
+      meses más tarde de lo estimado. Hoy, por una vez, el mercado dio una buena noticia:
+      <strong>el CDR cerró 2,79 % arriba y el resultado real pasó de +477 a +2.106 pesos</strong>,
+      más de cuatro veces en una sola rueda. Y justamente por eso conviene mirar la escala sin
+      hacerse ilusiones: esos 2.106 pesos son <em>todo</em> lo que la posición acumuló en
       <strong>72 días</strong>, mientras los <strong>60.000 que no entraron</strong> son
-      <strong>casi 30 veces más</strong> y no dependen de que NVIDIA tenga un buen día. Un día
+      <strong>más de 28 veces esa cifra</strong> y no dependen de que NVIDIA tenga un buen día. Un día
       verde no cambia la cuenta: el aporte sigue siendo lo único de los dos que Francisco
       controla. Con el IPC de septiembre en <strong>1,9 % mensual</strong> conviene además subirlo
       un poco cada mes, o el plan se estira de 12 a 13 aportes. Esto no es una recomendación de
@@ -756,17 +763,17 @@
   <!-- ============ HERO ============ -->
   <section>
     <div class="hero">
-      <span class="hero-label">Si Francisco vendiera ahora · provisorio, la rueda sigue abierta</span>
+      <span class="hero-label">Si Francisco vendiera al precio de cierre</span>
 
       <div class="hero-figure pos">
-        <span class="big">+2.027</span>
-        <span class="pct">pesos&nbsp;&nbsp;·&nbsp;&nbsp;+3,49 %</span>
+        <span class="big">+2.106</span>
+        <span class="pct">pesos&nbsp;&nbsp;·&nbsp;&nbsp;+3,63 %</span>
       </div>
 
       <div class="hero-split">
         <div class="cell">
           <span class="k">Le quedarían</span>
-          <span class="v num">60.044</span>
+          <span class="v num">60.124</span>
           <span class="sub">ya pagada la venta</span>
         </div>
         <div class="cell">
@@ -776,7 +783,7 @@
         </div>
         <div class="cell">
           <span class="k">En papel</span>
-          <span class="v num pos">+2.800</span>
+          <span class="v num pos">+2.880</span>
           <span class="sub">lo que muestra el broker</span>
         </div>
         <div class="cell">
@@ -788,19 +795,18 @@
     </div>
 
     <p class="prose">
-      <strong>Miércoles 21/10, 15:06, rueda abierta</strong> — el CDR opera en
-      <strong>15.110</strong>, <strong>+2,65 %</strong> sobre el cierre de ayer (14.720). Es el
-      nivel más alto desde el 13/10 y, si aguanta hasta las 17:00, sería la
-      <strong>tercera suba diaria más grande de toda la bitácora</strong>, detrás del +8,10 % del
-      27/08 y el +3,85 % del 03/09. El resultado real salta de +477 a
-      <strong>+2.027 pesos (+3,49 %)</strong> —cuatro veces más en una rueda— y deja a Francisco
-      <strong>510 pesos por encima del punto de equilibrio</strong> (14.600). En papel la app del
-      broker le muestra <strong>+2.800</strong>; la diferencia son los 396 de comisión de venta.
-      Hoy <strong>manda la acción y el dólar casi no participa</strong>: NVIDIA sube 2,36 %
-      (221,57 USD) y el CCL implícito apenas 0,29 % (1.636,68). Y hay una continuidad directa con
-      el tablero de ayer: <strong>el <em>after hours</em> de 221,06 USD que se avisó anoche
-      sobrevivió a la apertura</strong>, y el CDR lo está reflejando hoy, tal como se anticipó.
-      <strong>Nada de esto es definitivo</strong>: faltan casi dos horas de rueda.
+      <strong>Miércoles 21/10, cierre</strong> — el CDR terminó en <strong>15.130</strong>,
+      <strong>+2,79 %</strong> sobre el cierre de ayer (14.720). Es el nivel más alto desde el
+      13/10 y <strong>iguala exactamente el +2,79 % del 21/09</strong>: entre las dos son la
+      cuarta suba diaria más grande de la bitácora, detrás del +8,10 % del 27/08, el +3,85 % del
+      03/09 y el +2,85 % del 12/08. El resultado real salta de +477 a
+      <strong>+2.106 pesos (+3,63 %)</strong> —más de cuatro veces en una rueda— y deja a
+      Francisco <strong>530 pesos por encima del punto de equilibrio</strong> (14.600). En papel
+      la app del broker le muestra <strong>+2.880</strong>; la diferencia son los 396 de comisión
+      de venta. Hoy <strong>mandó la acción y el dólar casi no participó</strong>: NVIDIA cerró
+      +2,54 % (221,97 USD) y el CCL implícito apenas +0,24 % (1.635,90). Y hay una continuidad
+      directa con el tablero de ayer: <strong>el <em>after hours</em> de 221,06 USD que se avisó
+      anoche sobrevivió a la apertura</strong>, y el CDR lo reflejó hoy, tal como se anticipó.
     </p>
   </section>
 
@@ -808,18 +814,18 @@
   <section>
     <div class="sec-head">
       <h2>El tramo entero, rueda por rueda</h2>
-      <span class="aside">09/10 → 21/10 · 8 ruedas · la última en curso</span>
+      <span class="aside">09/10 → 21/10 · 8 ruedas · todas cerradas</span>
     </div>
 
     <p class="prose">
       El tablero estuvo ocho días parado y conviene seguir leyendo el tramo completo, no sólo el
       último día. Son <strong>ocho ruedas, cuatro rojas, tres verdes y una plana</strong>: el CDR
-      pasó de 15.530 el 08/10 a <strong>15.110 ahora, −2,70 %</strong>, y contra el récord del
-      06/10 (16.100) la caída se reduce a <strong>6,15 %</strong>. El resultado real bajó desde
-      <strong>+5.961 pesos —el máximo histórico de la bitácora, del 06/10— hasta −358 el
-      viernes</strong>, rebotó a +477 el lunes, se quedó ahí el martes y
-      <strong>hoy salta a +2.027</strong>. Del pozo ya se recuperó más de la mitad: quedan
-      <strong>3.934 pesos por devolver</strong> contra el récord, cuando el viernes faltaban 6.319.
+      pasó de 15.530 el 08/10 a <strong>15.130 al cierre de hoy, −2,58 %</strong>, y contra el
+      récord del 06/10 (16.100) la caída se reduce a <strong>6,02 %</strong>. El resultado real
+      bajó desde <strong>+5.961 pesos —el máximo histórico de la bitácora, del 06/10— hasta −358
+      el viernes</strong>, rebotó a +477 el lunes, se quedó ahí el martes y
+      <strong>hoy cierra en +2.106</strong>. Del pozo ya se recuperó más de la mitad: quedan
+      <strong>3.855 pesos por devolver</strong> contra el récord, cuando el viernes faltaban 6.319.
     </p>
 
     <div class="table-scroll">
@@ -905,12 +911,12 @@
             <td>empataron, se anularon</td>
           </tr>
           <tr>
-            <td>Mié 21/10 <em>en curso</em></td>
-            <td>15.110</td>
-            <td class="pos">+2,65 %</td>
-            <td class="pos">+2,36 %</td>
-            <td class="pos">+0,29 %</td>
-            <td class="pos">+2.027</td>
+            <td>Mié 21/10</td>
+            <td>15.130</td>
+            <td class="pos">+2,79 %</td>
+            <td class="pos">+2,54 %</td>
+            <td class="pos">+0,24 %</td>
+            <td class="pos">+2.106</td>
             <td>la acción, a favor</td>
           </tr>
         </tbody>
@@ -931,22 +937,22 @@
 
     <p class="prose">
       Mirar la columna del CCL de arriba abajo explica el tramo mejor que cualquier párrafo:
-      +1,56 %, −2,16 % y después +0,63 %, +0,17 %, +0,41 %, +0,06 %, +0,29 % y +0,29 %.
+      +1,56 %, −2,16 % y después +0,63 %, +0,17 %, +0,41 %, +0,06 %, +0,29 % y +0,24 %.
       <strong>El dólar hizo todo el ruido en las dos primeras ruedas y después se apagó</strong>:
       seis ruedas seguidas con el CCL moviéndose menos de siete décimas. Y acá está la lección más
-      fina del tramo, que aparece recién hoy: <strong>el dólar se movió exactamente lo mismo ayer
-      que hoy —+0,29 % las dos veces— y el papel que jugó fue completamente distinto</strong>.
-      Ayer esas tres décimas alcanzaron para tapar la caída entera de NVIDIA y dejar el CDR
-      clavado; hoy, al lado de un +2,36 % de la acción, son casi invisibles. <strong>Lo que define
-      quién manda no es el tamaño del movimiento del dólar, sino su tamaño comparado con el de la
-      acción.</strong>
+      fina del tramo, que aparece recién hoy: <strong>el dólar se movió prácticamente lo mismo
+      ayer que hoy —+0,29 % y +0,24 %, cinco centésimas de diferencia— y el papel que jugó fue
+      completamente distinto</strong>. Ayer esas tres décimas alcanzaron para tapar la caída entera
+      de NVIDIA y dejar el CDR clavado; hoy, al lado de un +2,54 % de la acción, son casi
+      invisibles. <strong>Lo que define quién manda no es el tamaño del movimiento del dólar, sino
+      su tamaño comparado con el de la acción.</strong>
     </p>
 
     <p class="prose">
       Visto en conjunto, el veredicto del tramo no cambia: <strong>desde el récord del 06/10
-      NVIDIA cae 7,39 %</strong> (de 239,24 a 221,57 USD) mientras el
-      <strong>CCL implícito sube 1,34 %</strong> en todo el período (1.615,11 a 1.636,68), y el
-      CDR queda <strong>6,15 % abajo</strong>. <strong>El dólar prácticamente no hizo nada en el
+      NVIDIA cae 7,22 %</strong> (de 239,24 a 221,97 USD) mientras el
+      <strong>CCL implícito sube 1,29 %</strong> en todo el período (1.615,11 a 1.635,90), y el
+      CDR queda <strong>6,02 % abajo</strong>. <strong>El dólar prácticamente no hizo nada en el
       acumulado de diez ruedas; el movimiento fue casi todo de la acción.</strong> Las dos semanas
       anteriores el dólar había sido el protagonista; en este tramo se quedó al margen de punta a
       punta, salvo las dos primeras ruedas y el empate de ayer.
@@ -957,44 +963,45 @@
   <section>
     <div class="sec-head">
       <h2>Los dos motores</h2>
-      <span class="aside">variación vs. cierre martes 20/10 · parcial</span>
+      <span class="aside">variación vs. cierre martes 20/10</span>
     </div>
 
     <p class="prose">
       Un CDR se mueve por dos cosas a la vez: lo que hace la acción en Estados Unidos, y lo
       que hace el dólar acá. Hoy el reparto es de los más claros que dio el proyecto:
-      <strong>manda la acción y el dólar es casi un espectador</strong>.
-      <strong>NVIDIA sube 2,36 %</strong> y el <strong>dólar CCL implícito sube 0,29 %</strong>,
-      así que el CDR se mueve <strong>+2,65 %</strong> — los dos motores empujan para el mismo
-      lado, pero uno aporta ocho veces más que el otro. Puesto al lado de ayer la comparación es
-      perfecta: <strong>el dólar se movió exactamente lo mismo las dos ruedas, +0,29 %</strong>,
-      y ayer eso borró el movimiento entero de la acción mientras hoy apenas lo redondea.
+      <strong>mandó la acción y el dólar fue casi un espectador</strong>.
+      <strong>NVIDIA subió 2,54 %</strong> y el <strong>dólar CCL implícito 0,24 %</strong>,
+      así que el CDR se movió <strong>+2,79 %</strong> — los dos motores empujaron para el mismo
+      lado, pero uno aportó <strong>once veces más</strong> que el otro. Puesto al lado de ayer la
+      comparación es casi perfecta: <strong>el dólar se movió prácticamente lo mismo las dos
+      ruedas, +0,29 % y +0,24 %</strong>, y ayer eso borró el movimiento entero de la acción
+      mientras hoy apenas lo redondea.
     </p>
 
     <div class="motor">
 
       <div class="motor-row">
         <div class="motor-top">
-          <span class="motor-name"><strong>NVIDIA</strong> en Nasdaq · 221,57 USD</span>
-          <span class="motor-val pos num">+2,36 %</span>
+          <span class="motor-name"><strong>NVIDIA</strong> en Nasdaq · 221,97 USD</span>
+          <span class="motor-val pos num">+2,54 %</span>
         </div>
-        <div class="track"><span class="fill right" style="width: 39.27%;"></span></div>
+        <div class="track"><span class="fill right" style="width: 42.35%;"></span></div>
       </div>
 
       <div class="motor-row">
         <div class="motor-top">
-          <span class="motor-name"><strong>Dólar</strong> CCL implícito · 1.636,68</span>
-          <span class="motor-val pos num">+0,29 %</span>
+          <span class="motor-name"><strong>Dólar</strong> CCL implícito · 1.635,90</span>
+          <span class="motor-val pos num">+0,24 %</span>
         </div>
-        <div class="track"><span class="fill right" style="width: 4.78%;"></span></div>
+        <div class="track"><span class="fill right" style="width: 3.98%;"></span></div>
       </div>
 
       <div class="motor-row net">
         <div class="motor-top">
           <span class="motor-name"><strong>Resultado:</strong> el CDR en pesos</span>
-          <span class="motor-val pos num">+2,65 %</span>
+          <span class="motor-val pos num">+2,79 %</span>
         </div>
-        <div class="track"><span class="fill right" style="width: 44.16%;"></span></div>
+        <div class="track"><span class="fill right" style="width: 46.42%;"></span></div>
       </div>
 
       <div class="motor-scale">
@@ -1004,8 +1011,8 @@
 
     <div class="formula">
       NVIDIA sube fuerte × el dólar CCL sube un poco<br>
-      1,02356 × 1,00287 = 1,02650 &nbsp;→&nbsp; <strong>+2,65 %</strong><br>
-      <span style="color: var(--ink-faint)">Cierra clavada con el +2,65 % observado en el CDR (margen 0,00 pp). La cuenta descompone el movimiento: NVIDIA sube 2,36 % en Nueva York (221,57 desde 216,47) y el CCL implícito sube 0,29 % (1.636,68 desde 1.632,00). De los 2,65 puntos que ganó el CDR, <strong>2,36 son de la acción y 0,29 del dólar</strong>: casi el 89 % del movimiento vino de Nueva York. Fijarse en las barras de arriba — la de NVIDIA ocupa ocho veces lo que la del dólar. Las ocho ruedas del tramo cierran todas con margen 0,00 pp, que es el control de que los precios de Rava y de StockAnalysis son coherentes entre sí. Ojo: los tres números son provisorios, la rueda de BYMA cierra a las 17:00 y la de Nueva York a las 17:00 ET.</span>
+      1,02541 × 1,00239 = 1,02785 &nbsp;→&nbsp; <strong>+2,79 %</strong><br>
+      <span style="color: var(--ink-faint)">Cierra clavada con el +2,79 % observado en el CDR (margen 0,00 pp). La cuenta descompone el movimiento: NVIDIA subió 2,54 % en Nueva York (221,97 desde 216,47) y el CCL implícito 0,24 % (1.635,90 desde 1.632,00). De los 2,79 puntos que ganó el CDR, <strong>2,54 son de la acción y 0,24 del dólar</strong>: el 91 % del movimiento vino de Nueva York. Fijarse en las barras de arriba — la de NVIDIA ocupa once veces lo que la del dólar. Las ocho ruedas del tramo cierran todas con margen 0,00 pp, que es el control de que los precios de Rava y de StockAnalysis son coherentes entre sí. Los tres números son de cierre: BYMA cerró a las 17:00 y Nueva York a las 16:00 ET.</span>
     </div>
 
     <p class="prose">
@@ -1018,7 +1025,7 @@
       <strong>transparente</strong>: la acción subió y el CDR subió lo mismo, porque el dólar no se
       movió. Ayer, <strong>el caso nulo</strong>: la acción bajó, el dólar subió otro tanto y no
       pasó nada. Y hoy el caso <strong>a favor con el dólar de acompañante</strong>: la acción
-      sube fuerte, el dólar aporta tres décimas y el CDR sube un poco <em>más</em> que la acción.
+      subió fuerte, el dólar aportó dos décimas y el CDR subió un poco <em>más</em> que la acción.
       El cuadro queda completo: <strong>el CDR no es NVIDIA, es NVIDIA por el dólar</strong>.
       Según cómo se combinen, el mismo movimiento de la acción puede quedar tapado, duplicado,
       invertido, pasar entero, borrarse del todo o —como hoy— pasar con una propina.
@@ -1030,7 +1037,7 @@
       NVIDIA cotizaba 221,06 USD en el mercado extendido, que eso <em>no</em> era un cierre y que
       no se podía decidir nada con ese número, pero que <strong>si el movimiento sobrevivía a la
       apertura, el CDR lo iba a reflejar recién hoy</strong>. Sobrevivió: NVIDIA abrió en
-      <strong>220,96</strong>, está en <strong>221,57</strong>, y el CDR abrió con un salto de
+      <strong>220,96</strong> y cerró en <strong>221,97</strong>, y el CDR abrió con un salto de
       <strong>1,90 %</strong> (15.000 contra el cierre de 14.720). La moraleja no es que el
       <em>after hours</em> sirva para predecir —muchas veces se deshace de madrugada—, sino que
       <strong>el CDR va siempre un paso atrás de Nueva York</strong>: lo que pasa en el mercado
@@ -1043,25 +1050,25 @@
   <section>
     <div class="sec-head">
       <h2>Cómo se movió el CDR hoy</h2>
-      <span class="aside">372.058 nominales · parcial, rueda abierta</span>
+      <span class="aside">491.680 nominales · rueda completa</span>
     </div>
 
     <div class="range">
       <div class="range-track">
-        <span class="mark" data-kind="now" data-pos="below" style="left: 90.91%;">
-          <span class="tag"><span class="lbl">Ahora</span>15.110</span>
+        <span class="mark" data-kind="now" data-pos="below" style="left: 88.89%;">
+          <span class="tag"><span class="lbl">Cierre</span>15.130</span>
         </span>
       </div>
       <div class="range-ends">
         <span>mínimo 14.810</span>
-        <span>máximo 15.140</span>
+        <span>máximo 15.170</span>
       </div>
     </div>
 
     <p class="prose">
-      Rango de la rueda <em>hasta ahora</em>: <strong>330 pesos</strong> entre mínimo (14.810) y
-      máximo (15.140). El precio está en 15.110, <strong>a 90,9 % de la pista</strong>, a 30 pesos
-      del techo del día. Y acá está el dato que ordena toda la rueda:
+      Rango de la rueda completa: <strong>360 pesos</strong> entre mínimo (14.810) y máximo
+      (15.170). Cerró en 15.130, <strong>a 88,9 % de la pista</strong>, a 40 pesos del techo del
+      día — la rueda terminó comprada. Y acá está el dato que ordena todo:
       <strong>el mínimo de hoy quedó 90 pesos ARRIBA del cierre de ayer</strong>. Es decir que
       <em>todo</em> lo que se operó hoy se operó por encima de 14.720: el CDR
       <strong>abrió con un salto de 1,90 % (15.000)</strong> y no volvió a mirar para abajo. Por
@@ -1080,12 +1087,13 @@
     </p>
 
     <p class="prose">
-      Sobre el volumen hay que ser prudente: <strong>372.058 nominales es una cifra
-      parcial</strong>. Faltan casi dos horas de rueda —BYMA cierra a las 17:00— así que
-      <strong>no tiene sentido compararla con los 537.394 de ayer</strong>, que son de una rueda
-      completa. Lo mismo vale para el rango: tanto el mínimo como el máximo
-      <strong>todavía pueden moverse</strong>, y el precio final puede quedar lejos de estos
-      15.110. El número definitivo lo va a cargar la corrida de las 17:35.
+      Ahora que la rueda cerró, el volumen ya se puede comparar: <strong>491.680 nominales contra
+      los 537.394 de ayer, un 8,5 % menos</strong>. Y eso es lo llamativo del día: el CDR tuvo la
+      cuarta suba más grande de la bitácora <strong>con menos negocios que en una rueda
+      plana</strong>. Visto así no sorprende: el movimiento no se discutió acá, llegó decidido de
+      Nueva York y BYMA sólo lo copió. A las 15:06 el volumen parcial era de 372.058, o sea que
+      <strong>las dos últimas horas aportaron 119.622 nominales</strong>, casi una cuarta parte de
+      la rueda, y en ese tramo el precio subió apenas 20 pesos y el máximo se estiró 30.
     </p>
   </section>
 
@@ -1093,13 +1101,13 @@
   <section>
     <div class="sec-head">
       <h2>NVIDIA, la empresa de atrás</h2>
-      <span class="aside">últimas 52 semanas · precio en vivo</span>
+      <span class="aside">últimas 52 semanas · cierre de Nueva York</span>
     </div>
 
     <div class="range">
       <div class="range-track">
-        <span class="mark" data-kind="now" data-pos="above" style="left: 72.44%;">
-          <span class="tag"><span class="lbl">Ahora</span>221,57</span>
+        <span class="mark" data-kind="now" data-pos="above" style="left: 72.95%;">
+          <span class="tag"><span class="lbl">Cierre</span>221,97</span>
         </span>
       </div>
       <div class="range-ends">
@@ -1111,19 +1119,19 @@
     <div class="grid-facts">
       <div class="cell">
         <span class="k">Desde el máximo</span>
-        <span class="v num neg">−8,96 %</span>
+        <span class="v num neg">−8,79 %</span>
       </div>
       <div class="cell">
         <span class="k">Desde el mínimo</span>
-        <span class="v num pos">+34,88 %</span>
+        <span class="v num pos">+35,13 %</span>
       </div>
       <div class="cell">
         <span class="k">Capitalización</span>
-        <span class="v num">≈ 5,35 B USD</span>
+        <span class="v num">≈ 5,36 B USD</span>
       </div>
       <div class="cell">
         <span class="k">Precio / ganancias</span>
-        <span class="v num">≈ 28,0</span>
+        <span class="v num">≈ 28,1</span>
       </div>
       <div class="cell">
         <span class="k">Próximo balance</span>
@@ -1133,21 +1141,23 @@
       <div class="cell">
         <span class="k">Punto de equilibrio</span>
         <span class="v num">14.600</span>
-        <span class="sub">510 pesos por debajo</span>
+        <span class="sub">530 pesos por debajo</span>
       </div>
     </div>
 
     <p class="prose">
-      NVIDIA opera ahora en <strong>221,57 USD (+2,36 %)</strong> con la rueda de Nueva York
-      todavía abierta — cierra a las 17:00 ET, o sea 18:00 de acá. Es el
-      <strong>nivel más alto desde el 13/10</strong> y, si aguanta, sería la cuarta suba diaria
-      más grande de la bitácora, detrás del +8,77 % del 27/08, el +3,21 % del 02/09 y el +3,03 %
-      del 12/08. Recortó buena parte de la caída del tramo: <strong>acumula −7,39 % desde el
-      máximo del 06/10</strong> (239,24), cuando ayer acumulaba −9,52 %. Queda
-      <strong>8,96 % debajo del máximo de 52 semanas</strong> (243,37, marcado el 06/10) y
-      34,88 % arriba del mínimo. Los extremos de la ventana <strong>no se movieron</strong>:
+      NVIDIA cerró en <strong>221,97 USD (+2,54 %)</strong>, su
+      <strong>nivel más alto desde el 13/10</strong>, y la suba
+      <strong>empata al milímetro con el +2,54 % del 17/09</strong>: entre las dos son la cuarta
+      suba diaria más grande de la bitácora, detrás del +8,77 % del 27/08, el +3,21 % del 02/09 y
+      el +3,03 % del 12/08. Recortó buena parte de la caída del tramo: <strong>acumula −7,22 %
+      desde el máximo del 06/10</strong> (239,24), cuando ayer acumulaba −9,52 %. Queda
+      <strong>8,79 % debajo del máximo de 52 semanas</strong> (243,37, marcado el 06/10) y
+      35,13 % arriba del mínimo. Los extremos de la ventana <strong>no se movieron</strong>:
       siguen 164,27 y 243,37, y en la pista el marcador subió de 65,99 % a
-      <strong>72,44 %</strong>, el salto diario más grande del tramo.
+      <strong>72,95 %</strong>, el salto diario más grande del tramo. En el mercado extendido la
+      acción quedó en <strong>221,86 (−0,05 %)</strong>: prácticamente plano, así que esta vez
+      —al revés de anoche— <strong>el <em>after hours</em> no deja ninguna pista para mañana</strong>.
     </p>
 
     <p class="prose">
@@ -1156,7 +1166,8 @@
       —2,12 % arriba—, que eso <strong>no era un cierre</strong>, que no se podía decidir nada con
       ese número y que, si sobrevivía a la apertura, el CDR lo iba a reflejar recién hoy.
       <strong>Sobrevivió</strong>: la acción abrió en <strong>220,96</strong> —casi exactamente el
-      precio del mercado extendido— y desde ahí siguió para arriba. Conviene no sacar la
+      precio del mercado extendido—, siguió para arriba y cerró en <strong>221,97</strong>, un
+      peso arriba de donde había quedado anoche. Conviene no sacar la
       conclusión apurada de que el <em>after hours</em> «predice»: muchas veces se deshace de
       madrugada, y por eso sigue sin entrar en ninguna cuenta de este tablero. Lo que esta rueda
       sí confirma es el <strong>desfasaje horario</strong>: <strong>el CDR en pesos va un paso
@@ -1164,13 +1175,13 @@
     </p>
 
     <p class="prose">
-      El <strong>precio sobre ganancias subió de ≈ 27,4 a ≈ 28,0</strong> y el forward de 17,90 a
-      18,32, otra vez <em>sin que cambiara nada de la empresa</em>: el próximo balance todavía no
+      El <strong>precio sobre ganancias subió de ≈ 27,4 a ≈ 28,1</strong> y el forward de 17,90 a
+      18,34, otra vez <em>sin que cambiara nada de la empresa</em>: el próximo balance todavía no
       salió, así que la ganancia por acción es idéntica y lo único que se movió fue el precio.
       Ayer el mismo indicador bajó por este mismo motivo al revés. <strong>El número se mueve por
       causas distintas</strong> y sólo tiene sentido leerlo junto con el motivo. La
-      capitalización pasó de ≈ 5,23 a <strong>≈ 5,35 billones de dólares</strong>: en una mañana
-      la empresa «vale» 120.000 millones más, que es más o menos el PBI de un país mediano, sin
+      capitalización pasó de ≈ 5,23 a <strong>≈ 5,36 billones de dólares</strong>: en un día la
+      empresa «vale» unos 130.000 millones más, que es más o menos el PBI de un país mediano, sin
       que haya vendido un chip más. El <strong>próximo balance es el 18/11</strong>, después del
       cierre de Nueva York, dentro de cuatro semanas: es el evento que puede volver a mover la
       acción de golpe, como pasó el 27/08 (+8,77 % en un día).
@@ -1198,11 +1209,11 @@
 
     <p class="prose">
       El punto de equilibrio está en <strong>14.600</strong> y no en los 14.410 que Francisco
-      pagó, justamente por los costos de las dos puntas. El CDR opera en
-      <strong>15.110: 510 pesos por encima de esa línea</strong>, contra los 120 de ayer. La app
-      del broker le muestra <strong>+2.800 pesos en papel</strong> —porque compara contra los
+      pagó, justamente por los costos de las dos puntas. El CDR cerró en
+      <strong>15.130: 530 pesos por encima de esa línea</strong>, contra los 120 de ayer. La app
+      del broker le muestra <strong>+2.880 pesos en papel</strong> —porque compara contra los
       14.410— y descontando los <strong>396 de comisión de venta</strong> el número real es
-      <strong>+2.027</strong>. Las dos pantallas coinciden en el signo, aunque no en el tamaño: la
+      <strong>+2.106</strong>. Las dos pantallas coinciden en el signo, aunque no en el tamaño: la
       diferencia entre una y otra es, exactamente, lo que cuesta salir. Y conviene notar que
       <strong>la comisión de venta creció</strong> de 386 a 396 pesos: se cobra sobre el monto
       operado, así que cuanto más vale la posición, más cuesta salir de ella.
@@ -1222,11 +1233,11 @@
 
     <p class="prose">
       Podría haber sido bastante peor. La tabla de Nación Bursátil autoriza <em>hasta</em>
-      2,75 %: a esa tasa el equilibrio se iba a <strong>15.417</strong>, y con el CDR en 15.110
-      Francisco <strong>todavía estaría perdiendo unos 1.189 pesos en lugar de ganar 2.027</strong>.
+      2,75 %: a esa tasa el equilibrio se iba a <strong>15.417</strong>, y con el CDR en 15.130
+      Francisco <strong>todavía estaría perdiendo unos 1.111 pesos en lugar de ganar 2.106</strong>.
       O sea que incluso con esta suba, y con la posición cómodamente en verde a la comisión real,
       a la comisión máxima <strong>seguiría del lado rojo</strong> y necesitaría otro
-      <strong>2,03 % de suba sólo para empatar</strong>. Le cobraron 0,5 %.
+      <strong>1,90 % de suba sólo para empatar</strong>. Le cobraron 0,5 %.
       <strong>La diferencia entre esas dos comisiones vale más que muchos aciertos eligiendo
       la acción</strong>, y es la clase de cosa que conviene mirar antes de abrir una cuenta,
       no después.
@@ -1267,8 +1278,8 @@
         <span class="breakeven" style="left: 42.86%;">
           <span class="tag"><span class="lbl">Empata</span>14.600</span>
         </span>
-        <span class="today" style="left: 52.84%;">
-          <span class="tag"><span class="lbl">Ahora</span>15.110</span>
+        <span class="today" style="left: 53.23%;">
+          <span class="tag"><span class="lbl">Cierre</span>15.130</span>
         </span>
       </div>
       <div class="thermo-ends">
@@ -1289,7 +1300,7 @@
           <tr>
             <th>Disparador</th>
             <th>Precio del CDR</th>
-            <th>Desde ahora</th>
+            <th>Desde el cierre</th>
             <th>Se lleva</th>
           </tr>
         </thead>
@@ -1297,19 +1308,19 @@
           <tr>
             <td>Gana 20 %</td>
             <td>17.520</td>
-            <td class="pos">+15,95 %</td>
+            <td class="pos">+15,80 %</td>
             <td class="pos">+11.604</td>
           </tr>
           <tr>
             <td>Queda a mano</td>
             <td>14.600</td>
-            <td class="neg">−3,38 %</td>
+            <td class="neg">−3,50 %</td>
             <td>0</td>
           </tr>
           <tr>
             <td>Pierde 15 %</td>
             <td>12.410</td>
-            <td class="neg">−17,87 %</td>
+            <td class="neg">−17,98 %</td>
             <td class="neg">−8.703</td>
           </tr>
         </tbody>
@@ -1324,19 +1335,19 @@
     </p>
 
     <p class="prose">
-      El marcador negro del termómetro <strong>se corrió casi ocho puntos de la pista en una sola
-      rueda</strong>, de 45,21 % a <strong>52,84 %</strong>: es el salto diario más grande desde
+      El marcador negro del termómetro <strong>se corrió ocho puntos de la pista en una sola
+      rueda</strong>, de 45,21 % a <strong>53,23 %</strong>: es el salto diario más grande desde
       el 02/10. Pasó de estar 120 pesos arriba de la línea de empate a estar
-      <strong>510 pesos arriba</strong>: la mayor distancia por encima del equilibrio
+      <strong>530 pesos arriba</strong>: la mayor distancia por encima del equilibrio
       <strong>desde el 13/10</strong>. Igual conviene no darle demasiada entidad al color: tres
       ruedas atrás, el viernes, estaba del lado rojo. En cuatro días hábiles el marcador fue de
       rojo a verde holgado sin que cambiara nada del plan.
     </p>
 
     <p class="prose">
-      Los dos disparadores se corrieron los dos <strong>más de tres puntos</strong>, y en la misma
-      dirección: el de ganancia se acercó de +19,02 % a <strong>+15,95 %</strong> y el de pérdida
-      se alejó de −15,69 % a <strong>−17,87 %</strong>. Las dos noticias son buenas al mismo
+      Los dos disparadores se corrieron los dos <strong>más de dos puntos</strong>, y en la misma
+      dirección: el de ganancia se acercó de +19,02 % a <strong>+15,80 %</strong> y el de pérdida
+      se alejó de −15,69 % a <strong>−17,98 %</strong>. Las dos noticias son buenas al mismo
       tiempo, y eso es lo que pasa cuando el precio sube: el techo se acerca y el piso se aleja.
       Visto con más perspectiva, todavía falta bastante para volver a la lectura del martes 06/10,
       cuando el objetivo de ganancia estaba a <strong>+8,82 %</strong>, la más corta de toda la
@@ -1403,11 +1414,11 @@
 
     <p class="prose">
       Hoy es el día perfecto para entender por qué esta barra está separada del resto del tablero:
-      <strong>la posición subió 2,65 % y la barra no se movió un milímetro</strong>. Ayer la
+      <strong>la posición subió 2,79 % y la barra no se movió un milímetro</strong>. Ayer la
       posición no se movió nada y la barra tampoco. Anteayer subió 1,45 % y la barra tampoco. El
       viernes bajó 1,02 % y la barra tampoco. <strong>La barra nunca depende de eso</strong>:
       cuatro ruedas distintas, cuatro resultados distintos, la misma barra. En cuatro ruedas la
-      posición pasó de <strong>−0,62 %</strong> el viernes a <strong>+3,49 %</strong> ahora.
+      posición pasó de <strong>−0,62 %</strong> el viernes a <strong>+3,63 %</strong> hoy.
       <strong>La posición sube y baja sola; el aporte depende de Francisco.</strong> Confundir los
       dos lleva a quedarse tranquilo cuando el mercado acompaña —como hoy— y a desanimarse cuando
       no, y ninguna de las dos reacciones mueve la barra.
@@ -1415,11 +1426,11 @@
 
     <p class="prose">
       Los números en escala, que siguen siendo contundentes incluso en un día bueno:
-      <strong>la ganancia real acumulada en 72 días es +2.027 pesos</strong>, el mejor número
-      desde el 13/10, y aun así <strong>3,5 % sobre lo puesto</strong>. Los
+      <strong>la ganancia real acumulada en 72 días es +2.106 pesos</strong>, el mejor número
+      desde el 13/10, y aun así <strong>3,6 % sobre lo puesto</strong>. Los
       <strong>60.000 que no entraron</strong> en septiembre y octubre valen
-      <strong>casi 30 veces</strong> todo lo que la posición rindió en dos meses y medio. Y el
-      vaivén de los últimos diez días —de +5.961 el 06/10 a −358 el viernes y +2.027 hoy— es ruido
+      <strong>más de 28 veces</strong> todo lo que la posición rindió en dos meses y medio. Y el
+      vaivén de los últimos diez días —de +5.961 el 06/10 a −358 el viernes y +2.106 hoy— es ruido
       al lado de eso. <strong>Al principio de un plan de acumulación el aporte le gana al mercado
       por goleada</strong>: dos meses salteados cuestan más que cualquier semana buena o mala de la
       acción. <strong>La próxima ventana abre el 01/11, en once días</strong>, y es la primera
@@ -1447,38 +1458,37 @@
   <section>
     <div class="sec-head">
       <h2>La nota del día</h2>
-      <span class="aside">21/10/2026 · intradiario · 15:06 · rueda abierta</span>
+      <span class="aside">21/10/2026 · cierre · rueda completa</span>
     </div>
 
     <div class="nota">
       <p class="lede">
-        <strong>Antes de los números, la advertencia: esto no es un cierre.</strong> La toma se
-        hizo a las <strong>15:06</strong>, con BYMA operando hasta las 17:00 y Nueva York abierta.
-        Todo lo que sigue es provisorio y la corrida de las 17:35 lo va a reemplazar. Dicho eso:
-        el CDR opera en <strong>15.110, un 2,65 % arriba</strong> del cierre de ayer (14.720), el
-        nivel más alto desde el 13/10, y el resultado real salta de +477 a
-        <strong>+2.027 pesos (+3,49 %)</strong> — cuatro veces más en una sola rueda. Francisco
-        queda <strong>510 pesos por encima del punto de equilibrio</strong>, contra los 120 de
-        ayer. Si la suba aguanta hasta las 17:00, sería la <strong>tercera suba diaria más
-        grande</strong> de las 51 ruedas de la bitácora.
+        <strong>Buena rueda, y esta vez el número es definitivo.</strong> El CDR cerró en
+        <strong>15.130, un 2,79 % arriba</strong> del cierre de ayer (14.720), el nivel más alto
+        desde el 13/10, y el resultado real salta de +477 a
+        <strong>+2.106 pesos (+3,63 %)</strong> — más de cuatro veces en una sola rueda. Francisco
+        queda <strong>530 pesos por encima del punto de equilibrio</strong>, contra los 120 de
+        ayer. La suba <strong>iguala al centésimo el +2,79 % del 21/09</strong>: entre las dos son
+        la cuarta más grande de las 51 ruedas de la bitácora, detrás del +8,10 % del 27/08, el
+        +3,85 % del 03/09 y el +2,85 % del 12/08.
       </p>
       <p>
-        Hoy manda la acción y el dólar es casi un espectador. <strong>NVIDIA sube 2,36 %</strong>
-        en Nueva York (221,57 USD desde 216,47) y el <strong>dólar CCL implícito sube
-        0,29 %</strong> (de 1.632,00 a 1.636,68). La cuenta: 1,02356 × 1,00287 =
-        <strong>1,02650</strong>, o sea el +2,65 % observado, clavado. De los 2,65 puntos que ganó
-        el CDR, <strong>2,36 vinieron de Nueva York y 0,29 del dólar</strong>: casi el 89 % del
+        Hoy mandó la acción y el dólar fue casi un espectador. <strong>NVIDIA subió 2,54 %</strong>
+        en Nueva York (221,97 USD desde 216,47) y el <strong>dólar CCL implícito 0,24 %</strong>
+        (de 1.632,00 a 1.635,90). La cuenta: 1,02541 × 1,00239 =
+        <strong>1,02785</strong>, o sea el +2,79 % observado, clavado. De los 2,79 puntos que ganó
+        el CDR, <strong>2,54 vinieron de Nueva York y 0,24 del dólar</strong>: el 91 % del
         movimiento es de la acción. En el gráfico de los dos motores se ve de un vistazo — la
-        barra de NVIDIA ocupa ocho veces lo que la del dólar.
+        barra de NVIDIA ocupa once veces lo que la del dólar.
       </p>
       <p>
         Y acá viene lo interesante, que sólo se entiende leyendo las dos ruedas juntas:
-        <strong>el dólar se movió exactamente lo mismo ayer que hoy, +0,29 %</strong>, y cumplió
-        papeles opuestos. Ayer esas tres décimas alcanzaron para <em>tapar entera</em> la caída de
-        NVIDIA y dejar el CDR clavado en el mismo precio. Hoy, al lado de un +2,36 % de la acción,
-        son casi invisibles. <strong>Lo que define quién manda no es cuánto se mueve el dólar,
-        sino cuánto se mueve comparado con la acción.</strong> El mismo número, dos lecturas
-        distintas: es la clase de cosa que una tabla de porcentajes sola no muestra.
+        <strong>el dólar se movió prácticamente lo mismo ayer que hoy —+0,29 % y +0,24 %—</strong>
+        y cumplió papeles opuestos. Ayer esas tres décimas alcanzaron para <em>tapar entera</em> la
+        caída de NVIDIA y dejar el CDR clavado en el mismo precio. Hoy, al lado de un +2,54 % de la
+        acción, son casi invisibles. <strong>Lo que define quién manda no es cuánto se mueve el
+        dólar, sino cuánto se mueve comparado con la acción.</strong> Casi el mismo número, dos
+        lecturas distintas: es la clase de cosa que una tabla de porcentajes sola no muestra.
       </p>
       <p>
         <strong>El tablero de ayer anticipó esta rueda, y vale la pena verlo cumplido.</strong>
@@ -1486,47 +1496,55 @@
         hours</em>; que eso <em>no</em> era un cierre; que no se podía decidir nada con ese número;
         y que <strong>si el movimiento sobrevivía a la apertura, el CDR lo iba a reflejar recién
         hoy</strong>. Sobrevivió: NVIDIA abrió en <strong>220,96</strong> —casi el mismo precio del
-        mercado extendido— y el CDR abrió con un salto de <strong>1,90 %</strong> (15.000 contra el
-        cierre de 14.720). La moraleja no es que el <em>after hours</em> sirva para adivinar, porque
-        muchas veces se deshace de madrugada; es que <strong>el CDR en pesos va siempre un paso
-        atrás de Nueva York</strong>, porque cuando la acción se mueve de noche, BYMA está cerrado.
-        Ese salto de apertura no se negoció acá: llegó hecho.
+        mercado extendido—, cerró en 221,97, y el CDR abrió con un salto de
+        <strong>1,90 %</strong> (15.000 contra el cierre de 14.720). La moraleja no es que el
+        <em>after hours</em> sirva para adivinar, porque muchas veces se deshace de madrugada; es
+        que <strong>el CDR en pesos va siempre un paso atrás de Nueva York</strong>, porque cuando
+        la acción se mueve de noche, BYMA está cerrado. Ese salto de apertura no se negoció acá:
+        llegó hecho. Y para la rueda de mañana el mercado extendido no deja ninguna pista: NVIDIA
+        quedó en <strong>221,86, apenas 0,05 % abajo</strong>, prácticamente plano.
       </p>
       <p>
         El detalle más elegante de la rueda está en el rango. Mínimo <strong>14.810</strong>,
-        máximo <strong>15.140</strong>, 330 pesos de amplitud — y <strong>el mínimo quedó 90 pesos
-        ARRIBA del cierre de ayer</strong>. Es decir que todo lo que se operó hoy se operó por
-        encima de 14.720: el CDR abrió arriba y no volvió a mirar para abajo. Por eso en la pista
-        del día hay un solo marcador: ni el cierre anterior ni el precio de compra de Francisco
-        (14.410) entran en el rango. De paso, eso deja la <strong>franja incómoda entre 14.410 y
-        14.600 enteramente por debajo del mercado</strong>, 210 pesos abajo del mínimo: hoy, por
-        primera vez en varias ruedas, <em>en ningún momento</em> el broker mostró una ganancia que
-        en realidad no existía. El volumen, <strong>372.058 nominales, es parcial</strong> y no se
-        puede comparar con los 537.394 de ayer; faltan casi dos horas de rueda.
+        máximo <strong>15.170</strong>, 360 pesos de amplitud, y cerró a 40 pesos del techo — la
+        rueda terminó comprada. Pero lo que ordena el día es otra cosa: <strong>el mínimo quedó 90
+        pesos ARRIBA del cierre de ayer</strong>. Es decir que todo lo que se operó hoy se operó
+        por encima de 14.720: el CDR abrió arriba y no volvió a mirar para abajo. Por eso en la
+        pista del día hay un solo marcador: ni el cierre anterior ni el precio de compra de
+        Francisco (14.410) entran en el rango. De paso, eso deja la <strong>franja incómoda entre
+        14.410 y 14.600 enteramente por debajo del mercado</strong>, 210 pesos abajo del mínimo:
+        hoy, por primera vez en varias ruedas, <em>en ningún momento</em> el broker mostró una
+        ganancia que en realidad no existía. El volumen cerró en <strong>491.680 nominales, un
+        8,5 % menos que ayer</strong>: la cuarta suba más grande de la bitácora se hizo con menos
+        negocios que una rueda plana, que es lo que pasa cuando el movimiento llega decidido de
+        afuera y acá sólo se copia.
       </p>
       <p>
         El resto del cuadro acompaña sin sobresaltos. La posición medida en dólares sube de
-        <strong>36,08 a 36,93 USD</strong>. NVIDIA recortó la caída del tramo: queda
-        <strong>8,96 % debajo del máximo de 52 semanas</strong> (243,37, del 06/10) cuando ayer
-        estaba 11,05 % abajo. El precio sobre ganancias subió de ≈ 27,4 a ≈ 28,0 y la
-        capitalización de 5,23 a 5,35 billones de dólares, <em>sólo por el precio</em>: la
-        ganancia por acción es la misma hasta el <strong>balance del 18/11</strong>. Los
-        disparadores se corrieron los dos a favor —<strong>+15,95 %</strong> hasta 17.520 y
-        <strong>−17,87 %</strong> hasta 12.410—, <strong>ninguno en la zona de aviso de menos del
-        3 %</strong>, y no hay nada que decidir.
+        <strong>36,08 a 37,00 USD</strong>. NVIDIA recortó la caída del tramo: queda
+        <strong>8,79 % debajo del máximo de 52 semanas</strong> (243,37, del 06/10) cuando ayer
+        estaba 11,05 % abajo. El precio sobre ganancias subió de ≈ 27,4 a ≈ 28,1 y la
+        capitalización de 5,23 a 5,36 billones de dólares, <em>sólo por el precio</em>: la
+        ganancia por acción es la misma hasta el <strong>balance del 18/11</strong>. Un dato
+        lateral que conviene archivar: el <strong>CCL implícito en 1.635,90</strong> quedó a 6
+        pesos del máximo de toda la bitácora (1.642,36 del 09/10) y
+        <strong>encadena seis ruedas al alza desde el 13/10</strong> — nunca de golpe, siempre de
+        a poco. Los disparadores se corrieron los dos a favor —<strong>+15,80 %</strong> hasta
+        17.520 y <strong>−17,98 %</strong> hasta 12.410—, <strong>ninguno en la zona de aviso de
+        menos del 3 %</strong>, y no hay nada que decidir.
       </p>
       <p>
         Y lo de fondo, que un día verde no cambia: <strong>hay dos aportes de 30.000 sin
         hacer</strong> —septiembre y octubre— y <strong>la próxima ventana abre el 01/11</strong>,
         en once días. La barra de la meta sigue en 14,5 %, idéntica al día de la compra, y hoy es
-        el mejor día para entender por qué: <strong>la posición subió 2,65 % y la barra no se movió
-        un milímetro</strong>. La ganancia real acumulada en <strong>72 días es +2.027 pesos</strong>
+        el mejor día para entender por qué: <strong>la posición subió 2,79 % y la barra no se movió
+        un milímetro</strong>. La ganancia real acumulada en <strong>72 días es +2.106 pesos</strong>
         —el mejor número desde el 13/10— mientras los <strong>60.000 que no entraron</strong> son
-        <strong>casi 30 veces más</strong>, y son plata firme que no depende de que NVIDIA tenga una
-        buena mañana. <strong>La posición sube y baja sola; el aporte depende de Francisco</strong>
-        — y de los dos, ése es el único que mueve la barra. Del lado de la inflación no hay
-        novedades: el IPC de septiembre fue <strong>1,9 %</strong> y el de octubre se publica
-        alrededor del 13/11.
+        <strong>más de 28 veces esa cifra</strong>, y son plata firme que no depende de que NVIDIA
+        tenga un buen día. <strong>La posición sube y baja sola; el aporte depende de
+        Francisco</strong> — y de los dos, ése es el único que mueve la barra. Del lado de la
+        inflación no hay novedades: el IPC de septiembre fue <strong>1,9 %</strong> y el de
+        octubre se publica alrededor del 13/11.
       </p>
     </div>
   </section>
@@ -1535,7 +1553,7 @@
   <section>
     <div class="sec-head">
       <h2>Lo que falta</h2>
-      <span class="aside">7 pendientes</span>
+      <span class="aside">6 pendientes · uno se cerró hoy</span>
     </div>
 
     <ul class="todo">
@@ -1557,29 +1575,18 @@
       <li>
         <span><strong>Google Finance dejó de servir como fuente.</strong> Pendiente nuevo y
         concreto. El procedimiento la lista como fuente principal del precio de NVIDIA en
-        dólares, pero hoy devolvió <em>«Google Finance isn't supported on this device»</em> en vez
-        de datos. El precio se tomó de <strong>StockAnalysis</strong> y se cruzó contra la fila en
-        curso del histórico de esa misma página (221,57 contra 221,53, diferencia de minutos), así
-        que el dato entró con respaldo. Aun así <strong>hay que cambiar la fuente principal en el
+        dólares, pero hoy volvió a devolver <em>«Google Finance isn't supported on this
+        device»</em> en vez de datos, en las dos corridas del día. El precio de cierre se tomó de
+        <strong>StockAnalysis</strong>. <strong>Hay que cambiar la fuente principal en el
         procedimiento y en <code>posicion.json</code></strong> y elegir una segunda fuente
         independiente de StockAnalysis, porque cruzar una página contra sí misma no es un control
-        de verdad.</span>
-      </li>
-      <li>
-        <span><strong>Que la corrida de las 17:35 confirme el cierre.</strong> Hoy el tablero
-        quedó <em>intradiario</em>: la corrida salió a las <strong>15:06</strong> —el disparador
-        de inicio de sesión— con BYMA todavía operando, así que la fila entró como
-        <code>intradiario</code> y la corrida de las 17:35 tiene que
-        <strong>reemplazarla</strong> por el cierre. El mecanismo está previsto y esta vez quedó
-        bien rotulado de punta a punta, que es un avance respecto del lunes, cuando una corrida de
-        las 09:30 dejó el día colgado 24 horas. Lo que queda por verificar es que el reemplazo
-        ocurra efectivamente hoy a las 17:35 y no quede el intradiario como dato final — es la
-        primera vez que la bitácora publica el tablero con la rueda abierta.</span>
+        de verdad. Es el pendiente técnico más urgente de la lista: hace dos días que el lado del
+        dólar de NVIDIA entra con una sola fuente.</span>
       </li>
       <li>
         <span><strong>Cruzar siempre el precio con una segunda fuente.</strong> Sigue abierto y
         hoy quedó a medias. El CDR vino de Rava con la ficha coherente —precio, variación y rango
-        se validan entre sí, y el +2,65 % publicado coincide con el recálculo desde precios—, así
+        se validan entre sí, y el +2,79 % publicado coincide con el recálculo desde precios—, así
         que no hizo falta el cruce que ayer sí hizo falta contra InvertirOnline. Pero el lado de
         NVIDIA quedó con una sola fuente real, por lo de Google Finance.
         <strong>Conviene que el cruce sea parte fija del procedimiento</strong> y no algo que se
@@ -1599,6 +1606,14 @@
         dos motores viene mandando en cada tramo — justo lo que este tramo hubo que explicar con
         una tabla de ocho filas. Es el pendiente más viejo de la lista.</span>
       </li>
+      <li class="done">
+        <span><strong>Que la corrida de las 17:35 confirmara el cierre. ✓ Cumplido hoy.</strong>
+        A las 15:06 el tablero se publicó <em>intradiario</em> —el disparador de inicio de sesión
+        salió con BYMA todavía operando— y la corrida de las 17:35
+        <strong>reemplazó esa fila por el cierre</strong>, sin duplicar el día. Era la primera vez
+        que la bitácora publicaba con la rueda abierta y el mecanismo de reemplazo funcionó de
+        punta a punta.</span>
+      </li>
     </ul>
   </section>
 
@@ -1606,7 +1621,7 @@
   <section>
     <div class="sec-head">
       <h2>Historial</h2>
-      <span class="aside">51 registros · el último intradiario</span>
+      <span class="aside">51 registros · todos cierres</span>
     </div>
 
     <div class="table-scroll">
@@ -2126,13 +2141,13 @@
           </tr>
           <tr>
             <td>21/10</td>
-            <td>15.110</td>
-            <td class="pos">+2,65 %</td>
-            <td>221,57</td>
-            <td class="pos">+2,36 %</td>
-            <td>1.636,68</td>
-            <td>60.440</td>
-            <td class="pos">+2.027</td>
+            <td>15.130</td>
+            <td class="pos">+2,79 %</td>
+            <td>221,97</td>
+            <td class="pos">+2,54 %</td>
+            <td>1.635,90</td>
+            <td>60.520</td>
+            <td class="pos">+2.106</td>
           </tr>
         </tbody>
       </table>
@@ -2140,18 +2155,17 @@
 
     <p class="prose">
       <strong>51 ruedas registradas</strong> desde la compra del 10/08, que es todo lo que
-      operó BYMA en esas semanas: <strong>no falta ninguna</strong>. Las cincuenta primeras son
-      cierres definitivos; <strong>la última fila, la del 21/10, es intradiaria</strong> —tomada a
-      las 15:06 con la rueda abierta— y <strong>la corrida de las 17:35 la va a reemplazar</strong>
-      por el cierre. El feriado del 12/10 no lleva fila porque BYMA no operó. La columna de
-      resultado es siempre el <strong>neto de la comisión de venta</strong>, así que se puede leer
-      de arriba abajo como «cuánto le quedaba a Francisco si vendía ese día». Leída así, la serie
-      cuenta una historia bastante redonda: arrancó en rojo, pasó quince ruedas entre −2.821 y
-      +2.464, se despegó para arriba a fines de septiembre hasta el máximo de
-      <strong>+5.961 el 06/10</strong>, en las nueve ruedas siguientes volvió a cero, y en las dos
-      últimas empezó a recuperar. El mínimo de toda la serie sigue siendo
-      <strong>−2.821 el 24/08</strong>. El número de ahora, <strong>+2.027</strong>, queda
-      <strong>justo en la mitad de la tabla</strong> — a 4.848 pesos del peor día y a 3.934 del
+      operó BYMA en esas semanas: <strong>no falta ninguna</strong>, y
+      <strong>las 51 son cierres definitivos</strong> — la fila intradiaria que se publicó hoy al
+      mediodía quedó reemplazada por esta. El feriado del 12/10 no lleva fila porque BYMA no
+      operó. La columna de resultado es siempre el <strong>neto de la comisión de venta</strong>,
+      así que se puede leer de arriba abajo como «cuánto le quedaba a Francisco si vendía ese
+      día». Leída así, la serie cuenta una historia bastante redonda: arrancó en rojo, pasó quince
+      ruedas entre −2.821 y +2.464, se despegó para arriba a fines de septiembre hasta el máximo
+      de <strong>+5.961 el 06/10</strong>, en las nueve ruedas siguientes volvió a cero, y en las
+      dos últimas empezó a recuperar. El mínimo de toda la serie sigue siendo
+      <strong>−2.821 el 24/08</strong>. El número de hoy, <strong>+2.106</strong>, queda
+      <strong>justo en la mitad de la tabla</strong> — a 4.928 pesos del peor día y a 3.855 del
       mejor, que es la medida real de cuánto se mueve este activo en dos meses y medio.
     </p>
   </section>
@@ -2159,28 +2173,28 @@
   <footer>
     <p>
       <strong>Cómo se calcula el CCL implícito:</strong> precio del CDR en pesos × 24 ÷
-      precio de NVIDIA en dólares. Ahora: 15.110 × 24 ÷ 221,57 = 1.636,68 pesos por dólar.
+      precio de NVIDIA en dólares. Hoy: 15.130 × 24 ÷ 221,97 = 1.635,90 pesos por dólar.
     </p>
     <p>
-      El valor en dólares de la posición sale de multiplicar 0,1667 acciones × 221,57 USD =
-      <strong>36,93 USD</strong>, contra los 36,08 de ayer. Hoy las dos medidas apuntan para el
-      mismo lado —<strong>+2,65 % en pesos, +2,36 % en dólares</strong>— y la diferencia de tres
-      décimas es, exactamente, el aporte del dólar. En el tramo completo: la posición valía
-      <strong>39,87 USD el 06/10</strong> y ahora vale 36,93 — <strong>7,4 % menos en
-      dólares</strong> — mientras en pesos cayó 6,1 %. Esa brecha de 1,2 puntos es todo lo que
+      El valor en dólares de la posición sale de multiplicar 0,1667 acciones × 221,97 USD =
+      <strong>37,00 USD</strong>, contra los 36,08 de ayer. Hoy las dos medidas apuntan para el
+      mismo lado —<strong>+2,79 % en pesos, +2,54 % en dólares</strong>— y la diferencia de dos
+      décimas y media es, exactamente, el aporte del dólar. En el tramo completo: la posición
+      valía <strong>39,87 USD el 06/10</strong> y ahora vale 37,00 — <strong>7,2 % menos en
+      dólares</strong> — mientras en pesos cayó 6,0 %. Esa brecha de 1,2 puntos es todo lo que
       aportó el dólar en diez ruedas: <em>casi nada</em>. Medida en dólares la posición <em>es</em>
       la acción; medida en pesos, es la acción traducida.
     </p>
     <p>
       Fuentes: <a href="https://www.rava.com/perfil/NVDA">Rava Bursátil</a> (CDR en pesos:
-      precio, rango del día y volumen, ficha actualizada 21/10 15:04),
-      <a href="https://stockanalysis.com/stocks/nvda/">StockAnalysis</a> (precio de NVDA en
-      dólares —221,57 a las 14:06 ET con el mercado abierto—, histórico diario y rango de 52
+      cierre, rango del día y volumen, última rueda operada 21/10 17:05),
+      <a href="https://stockanalysis.com/stocks/nvda/">StockAnalysis</a> (cierre de NVDA en
+      dólares —221,97 al cierre regular de las 16:00 ET—, histórico diario y rango de 52
       semanas) e <a href="https://www.indec.gob.ar/">INDEC</a> (IPC). Google Finance no se pudo
       consultar: devuelve «Google Finance isn't supported on this device».
       <strong>Ningún precio se estimó.</strong> Rueda BYMA 11:00–17:00 con subasta de cierre;
-      <strong>esta lectura es intradiaria</strong> y el cierre definitivo se toma después de las
-      17:00.
+      <strong>esta lectura es el cierre definitivo</strong> del miércoles 21/10 y reemplaza la
+      toma intradiaria de las 15:06.
     </p>
     <p>
       Este tablero es un registro de datos con fines educativos. No es una recomendación de
