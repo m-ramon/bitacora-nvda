@@ -25,7 +25,10 @@ Proyecto de Mariano y Francisco. Seguimiento de 4 CDR de NVIDIA comprados el 10/
 - **Ratio del CDR: 24 CDR = 1 acción de NVIDIA** (0,04166667 acciones por CDR).
 - Posición: 4 CDR = 0,166667 acciones.
 - Monto bruto 57.640 ARS + 378 de costos = **costo total 58.017,54 ARS**.
-- BYMA opera de 11:00 a 17:00 (hora argentina, UTC−3 todo el año).
+- BYMA: el horario de 11:00 a 17:00 que decía acá **está mal o incompleto para los CEDEAR**.
+  El 02/11/2026 se vio el CDR operando a las **10:54** y todavía a las **17:51**, las dos veces
+  con el volumen creciendo. **Hay que averiguar el horario real antes de fijar la hora del
+  disparador.** (Hora argentina, UTC−3 todo el año.)
 - ⚠️ **NASDAQ cierra a las 18:00 hora argentina entre el 01/11/2026 y el 08/03/2027**, porque
   Estados Unidos salió del horario de verano y quedó en UTC−5. El resto del año cierra 17:00.
   **El reporte se hace después del cierre de los DOS mercados**, así que en este período no
