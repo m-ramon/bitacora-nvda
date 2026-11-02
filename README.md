@@ -25,7 +25,11 @@ Proyecto de Mariano y Francisco. Seguimiento de 4 CDR de NVIDIA comprados el 10/
 - **Ratio del CDR: 24 CDR = 1 acción de NVIDIA** (0,04166667 acciones por CDR).
 - Posición: 4 CDR = 0,166667 acciones.
 - Monto bruto 57.640 ARS + 378 de costos = **costo total 58.017,54 ARS**.
-- BYMA opera de 11:00 a 17:00. El reporte se hace después del cierre.
+- BYMA opera de 11:00 a 17:00 (hora argentina, UTC−3 todo el año).
+- ⚠️ **NASDAQ cierra a las 18:00 hora argentina entre el 01/11/2026 y el 08/03/2027**, porque
+  Estados Unidos salió del horario de verano y quedó en UTC−5. El resto del año cierra 17:00.
+  **El reporte se hace después del cierre de los DOS mercados**, así que en este período no
+  puede salir antes de las 18:00. Ver `horarios._ojo_dst` en `posicion.json`.
 
 ### Costos (confirmados por el boleto)
 
@@ -103,11 +107,27 @@ La tarea **«Bitacora NVDA - reporte diario»** del Programador de tareas de Win
 
 | Disparador | Cuándo | Para qué |
 |---|---|---|
-| Diario | Días hábiles 17:35 | La rueda del día (BYMA cierra 17:00) |
+| Diario | Días hábiles 17:35 | La rueda del día — ⚠️ **hay que moverlo a 18:15**, ver abajo |
 | Al iniciar sesión | 5 min después de prender | Recuperar lo que se haya perdido |
 
 Más `WakeToRun` (despierta la máquina si está suspendida) y `StartWhenAvailable` (si se pasó
 la hora, corre apenas puede).
+
+> ⚠️ **PENDIENTE ABIERTO DESDE EL 02/11/2026: el disparador de las 17:35 ya no sirve.**
+> Estados Unidos terminó el horario de verano el 01/11 y NASDAQ pasó a cerrar 18:00 ART, así
+> que la corrida de las 17:35 llega 25 minutos **antes** del cierre de NVIDIA y no puede
+> armar una fila completa — le falta la mitad del dato. Y la de inicio de sesión de la mañana
+> cae antes de la **apertura** de Nueva York, así que tampoco. **Hoy ninguno de los dos
+> disparadores puede cerrar una rueda.** Hay que mover el diario a **18:15**, que de paso
+> resuelve el pendiente viejo de esperar la consolidación de la ficha de Rava (que el 22/10 y
+> el 30/10 selló 18:04). Se arregla así:
+>
+> ```powershell
+> $t = New-ScheduledTaskTrigger -Daily -At 18:15
+> Set-ScheduledTask -TaskName 'Bitacora NVDA - reporte diario' -Trigger $t
+> ```
+>
+> Ojo que esto **se da vuelta solo el 08/03/2027**, cuando EE.UU. retome el horario de verano.
 
 ### Ninguna rueda se pierde
 
@@ -168,12 +188,32 @@ Get-Content 'C:\Users\maria\Codigo\10_Finanzas\historial.csv' | Select-Object -L
    con el histórico de Rava y https://stockanalysis.com/stocks/nvda/history/. Nunca estimar:
    si no hay dato real, la fila no se carga y se dice en la nota.
 
-1. **Buscar los tres precios**
-   - CDR NVDA en pesos: https://www.rava.com/perfil/NVDA
-     (último, variación %, cierre anterior, mínimo, máximo, volumen nominal)
-   - NVIDIA en dólares: https://www.google.com/finance/quote/NVDA:NASDAQ
-     (último, cierre anterior)
-   - Si hace falta contexto: https://stockanalysis.com/stocks/nvda/
+1. **Buscar los tres precios.** Cada uno se lee de dos fuentes y **se cruza antes de publicar.**
+   - CDR NVDA en pesos — primaria https://www.rava.com/perfil/NVDA
+     (último, variación %, cierre anterior, mínimo, máximo, volumen nominal),
+     secundaria https://iol.invertironline.com/titulo/cotizacion/BCBA/NVDA
+   - NVIDIA en dólares — primaria https://stockanalysis.com/stocks/nvda/,
+     secundaria https://finance.yahoo.com/quote/NVDA/
+     (**Google Finance está descartado**: devuelve «isn't supported on this device».)
+
+   Tres controles, en este orden, antes de usar cualquier precio:
+
+   1. **Coherencia interna de la ficha** (una sola división, no necesita la segunda fuente):
+      que `último / cierre_anterior − 1` reproduzca la variación % que la ficha publica. Si no
+      cierra, la ficha está mezclada y **no se usa**, aunque diga «sesión cerrada». El 02/11
+      Rava mostró último 14.210, cierre anterior 14.180 y −1,48 % a la vez, con la ficha
+      declarándose consolidada: los tres números no pueden convivir.
+   2. **La secundaria rodó de sesión**: su rango y su volumen no pueden ser iguales a los de la
+      última fila de `historial.csv`. Si lo son, todavía está en la rueda anterior y no sirve
+      para cruzar.
+   3. **El cruce.** Al cierre se exige coincidencia **al peso** en último, mínimo, máximo y
+      variación %; si difieren, no se publica. Intradiario alcanza con que coincida el rango y
+      que cada último caiga dentro del rango del otro.
+
+   Detalles de cada fuente (defectos conocidos, uno por uno) en los bloques `_ojo_*` de
+   `posicion.json`. Los dos que más pegan: **de InvertirOnline no se lee nunca la variación
+   absoluta** (viene mal seis ruedas al hilo, el % sí está bien), y **el rango de NVIDIA se
+   toma de Yahoo**, porque el mínimo de StockAnalysis viene atrasado.
 
 2. **Calcular**
    ```
@@ -297,8 +337,20 @@ sólo cambia cuando Francisco hace un aporte nuevo. Hoy: 58.018 / 400.000 = 14,5
 
 ## Pendientes
 
+- [ ] **Mover el disparador diario de 17:35 a 18:15** (ver el aviso de Automatización). Es lo
+      más urgente: hasta que no se haga, **ninguna corrida automática puede cerrar una rueda**.
+- [ ] **Recuperar la rueda del 02/11/2026**, que quedó sin fila. Es el caso difícil: el
+      histórico de Rava probablemente ofrezca el valor sin consolidar. Anclas firmes y
+      candidato con más respaldo, en `_ojo_cdr_ars` de `posicion.json`.
+- [ ] **Decidir cómo se calcula el CCL implícito ahora que los dos cierres no son simultáneos**
+      (NASDAQ cierra una hora después que BYMA hasta el 08/03/2027). Recomendación: seguir
+      pareando los dos cierres oficiales y anotar el desfasaje como ruido conocido. Está
+      planteado en `horarios._ojo_dst` de `posicion.json`.
 - [ ] Cargar el IPC de julio cuando salga (13/08) y recalcular la meta nominal.
 - [ ] Con ~2 semanas de datos, agregar el gráfico de evolución al tablero.
+- [x] Fuentes del `Procedimiento diario` actualizadas (02/11/2026): Google Finance afuera,
+      StockAnalysis + Yahoo para NVIDIA, Rava + InvertirOnline para el CDR, y los tres
+      controles del cruce escritos en el paso 1.
 - [x] Comisión real confirmada (0,5 %).
 - [x] Objetivos de salida definidos, con regla de reingreso.
 - [x] Meta de acumulación definida (400.000 en pesos de hoy, 30.000/mes).
