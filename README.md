@@ -73,19 +73,27 @@ Aporte de **30.000 por mes, en la primera semana de cada mes**.
 | | |
 |---|---|
 | Avance | 14,5 % (58.018 de 400.000) |
-| Próximo aporte | 1 al 7 de septiembre de 2026 |
+| Ventana de aporte en curso | **1 al 7 de noviembre de 2026** — todavía sin registrar |
+| Aportes vencidos sin hacer | septiembre y octubre de 2026 (60.000) |
 | Plazo si ajusta el aporte por inflación | 11,4 meses → **12 aportes** |
-| Plazo si deja el aporte fijo en 30.000 | 13,2 meses → **14 aportes** |
-| Meta nominal estimada | ≈ 535.082 ARS |
+| Plazo si deja el aporte fijo en 30.000 | 13 meses → **13 aportes** |
+| Meta nominal estimada | ≈ 510.886 ARS |
 
-Inflación: **2,1 % mensual**, dato real del IPC del INDEC de julio 2026 (33,8 % interanual,
-19,3 % acumulado en 2026). Ya no es un supuesto del REM.
+Inflación: **1,9 % mensual**, dato real del IPC del INDEC de septiembre 2026 (33,4 %
+interanual, 23,6 % acumulado en 2026). Historia: julio 2,1 % · agosto 1,7 % · septiembre 1,9 %.
 
-**No ajustar el aporte cuesta dos aportes extra**, no uno. Con 2,1 % mensual, los 30.000
-pierden poder de compra más rápido de lo que se creía con el 2,0 % supuesto.
+**No ajustar el aporte cuesta un aporte extra** (13 en vez de 12). Con el 2,1 % de julio
+costaba dos; bajó a uno cuando la inflación cedió a 1,7 % y se mantuvo con el 1,9 %.
+
+⚠️ **Los plazos suponen un aporte por mes sin faltar, y faltaron dos**, así que el calendario
+real ya corre dos meses atrasado respecto de este estimado.
 
 **Regla mensual:** cuando el INDEC publica el IPC (alrededor del día 13), actualizar el bloque
 `meta.inflacion` de `posicion.json` con el dato real y recalcular la meta nominal.
+
+⚠️ **Ojo con el calendario de noviembre:** el IPC de octubre sale alrededor del **13/11**, o sea
+**después** de que cierre la ventana de aportes del 01 al 07/11. La decisión de cuánto aportar
+este mes hay que tomarla con el dato de septiembre.
 
 ## Cómo se publica el tablero
 
@@ -116,6 +124,16 @@ La tarea **«Bitacora NVDA - reporte diario»** del Programador de tareas de Win
 Más `WakeToRun` (despierta la máquina si está suspendida) y `StartWhenAvailable` (si se pasó
 la hora, corre apenas puede).
 
+> ⚠️ **ACTUALIZACIÓN DEL 03/11/2026 — ESTO YA COSTÓ UN DÍA.** La rueda del 02/11 no la pudo
+> cerrar ninguno de los dos disparadores y la terminó cargando la corrida de inicio de sesión
+> del día siguiente, a las 09:50. Es la primera vez que se pierde una rueda **en el día** con
+> la computadora prendida y las dos corridas ejecutándose bien. Lo salvó la recuperación
+> automática, que publica un día tarde. **Y el horario nuevo todavía NO se puede fijar en
+> 18:15**: el 02/11 se vio al CDR operando a las 17:51 con el volumen creciendo, así que
+> primero hay que averiguar a qué hora cierra de verdad la rueda de CEDEAR. Si cierra cerca de
+> las 18:00, el disparador va a las **18:30 o 18:45**. Dato que apoya esperar: la ficha de Rava
+> del 02/11 recién quedó coherente en el sello de las **18:46**.
+>
 > ⚠️ **PENDIENTE ABIERTO DESDE EL 02/11/2026: el disparador de las 17:35 ya no sirve.**
 > Estados Unidos terminó el horario de verano el 01/11 y NASDAQ pasó a cerrar 18:00 ART, así
 > que la corrida de las 17:35 llega 25 minutos **antes** del cierre de NVIDIA y no puede
@@ -340,17 +358,46 @@ sólo cambia cuando Francisco hace un aporte nuevo. Hoy: 58.018 / 400.000 = 14,5
 
 ## Pendientes
 
-- [ ] **Mover el disparador diario de 17:35 a 18:15** (ver el aviso de Automatización). Es lo
-      más urgente: hasta que no se haga, **ninguna corrida automática puede cerrar una rueda**.
-- [ ] **Recuperar la rueda del 02/11/2026**, que quedó sin fila. Es el caso difícil: el
-      histórico de Rava probablemente ofrezca el valor sin consolidar. Anclas firmes y
-      candidato con más respaldo, en `_ojo_cdr_ars` de `posicion.json`.
+- [ ] **Mover el disparador diario de las 17:35.** Es lo más urgente: hasta que no se haga,
+      **ninguna corrida automática puede cerrar una rueda**. Ya no es preventivo — **el 02/11
+      costó un día de atraso en la publicación** (ver abajo). ⚠️ **La hora nueva todavía no se
+      puede fijar**: depende del pendiente que sigue. Si la rueda del CDR cierra cerca de las
+      18:00, el disparador va a las 18:30 o 18:45, no a las 18:15.
+- [ ] **Averiguar a qué hora cierra de verdad BYMA para los CEDEAR.** El 02/11 se vio el CDR
+      operando a las **10:54** y todavía a las **17:51**, las dos veces con el volumen
+      creciendo. El `11:00 a 17:00` que figura más arriba está mal o incompleto. Puede ser
+      sesión extendida de CEDEAR, subasta de cierre, o que BYMA haya corrido la rueda para
+      seguir a Nueva York. **Bloquea el pendiente anterior.**
+- [ ] **Conseguir una tercera fuente del CDR en pesos.** El 03/11 se extrañó: Rava e
+      InvertirOnline discreparon 10 pesos en el cierre del 02/11 y no hubo con qué desempatar.
+      **Cohen y Facimex fallaron las dos con error de certificado TLS**, y el histórico de Rava
+      devolvió 404 en dos variantes de URL. Candidato a probar: BYMA Data abierto
+      (`open.bymadata.com.ar`).
+- [ ] **Pasarle a InvertirOnline el control de coherencia interna.** El defecto de esa fuente
+      empeoró: van **siete ruedas** publicando mal la variación absoluta, y el 02/11 **por
+      primera vez arrastró también el último precio** (imprimió 13.970 cuando su propio
+      porcentaje da 13.960). La regla vieja —leer de ahí el precio, el rango, el volumen y el
+      porcentaje— ya no alcanza.
 - [ ] **Decidir cómo se calcula el CCL implícito ahora que los dos cierres no son simultáneos**
       (NASDAQ cierra una hora después que BYMA hasta el 08/03/2027). Recomendación: seguir
       pareando los dos cierres oficiales y anotar el desfasaje como ruido conocido. Está
       planteado en `horarios._ojo_dst` de `posicion.json`.
-- [ ] Cargar el IPC de julio cuando salga (13/08) y recalcular la meta nominal.
+- [ ] **Que `gen_tabla.py` avise solo.** Cuatro alarmas que hoy se chequean a mano: coherencia
+      interna de cada fuente (la más valiosa — detectó la ficha rota del 02/11 con una
+      división), récord o salto anómalo del CCL, variación que se sale de la escala de las
+      barras, y precio a menos del 3 % del punto de equilibrio.
+- [ ] Cargar el IPC de octubre cuando salga (~13/11) y recalcular la meta nominal.
 - [ ] Con ~2 semanas de datos, agregar el gráfico de evolución al tablero.
+- [x] **Rueda del 02/11/2026 recuperada** (03/11 09:50). Cerró en **13.960** (−1,55 %). Era el
+      caso difícil y se resolvió sin el histórico de Rava, que devolvió 404: la ficha en vivo
+      ya consolidada (sello 02/11 18:46) pasó el control de coherencia interna, y se cruzó con
+      InvertirOnline. **El cruce no fue al peso** —10 pesos de diferencia en el precio— y se
+      publicó igual, con el criterio escrito en `_ojo_cdr_ars`: cuando las dos fuentes
+      discrepan en el precio, se publica la que cierra consigo misma y se deja anotado.
+- [x] **Control de coherencia interna de la ficha** (02/11): verificar que
+      `último / cierre_anterior − 1` reproduzca la variación % que la propia ficha publica,
+      antes de cruzar. Detecta un modo de falla que el cruce solo no explica, con una división
+      y una sola fuente.
 - [x] Fuentes del `Procedimiento diario` actualizadas (02/11/2026): Google Finance afuera,
       StockAnalysis + Yahoo para NVIDIA, Rava + InvertirOnline para el CDR, y los tres
       controles del cruce escritos en el paso 1.
